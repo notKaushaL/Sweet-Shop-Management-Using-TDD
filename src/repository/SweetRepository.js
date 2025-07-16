@@ -40,7 +40,15 @@ class SweetRepository {
     return this.sweets.filter(sweet =>
       sweet.name.toLowerCase().includes(name.toLowerCase())  // Substring and Case-insensitive search
     );
-  }
+    }
+
+    // Search by Category
+      searchByCategory(category) {
+    return this.sweets.filter(sweet =>
+      sweet.category.toLowerCase() === category.toLowerCase()
+    );
+    }
+
 
 }
 
