@@ -147,7 +147,9 @@ describe('SweetStore.searchByPriceRange()', () => {
 
 
 
-// 3) Sorting by Price Ascending
+// 3) Sorting 
+
+ // Sort by Price Ascending
 describe('SweetStore.sortByPriceAsc()', () => {
   let store;
 
@@ -163,4 +165,22 @@ describe('SweetStore.sortByPriceAsc()', () => {
     expect(results.map(s => s.name)).toEqual(["Gulab Jamun", "Kaju Katli", "Chocolate Barfi"]);
   });
 });
+
+  // Sort by Price Descending
+describe('SweetStore.sortByPriceDescending()', () => {
+  let store;
+
+  beforeEach(() => {
+    store = new SweetStore();
+    store.addSweet(new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20));
+    store.addSweet(new Sweet(1002, "Gulab Jamun", "Milk-Based", 30, 15));
+    store.addSweet(new Sweet(1003, "Rasgulla", "Milk-Based", 70, 10));
+  });
+
+  test('should return sweets sorted by descending price', () => {
+    const sorted = store.sortByPriceDescending();
+    expect(sorted.map(s => s.name)).toEqual(["Rasgulla", "Kaju Katli", "Gulab Jamun"]);
+  });
+});
+
 

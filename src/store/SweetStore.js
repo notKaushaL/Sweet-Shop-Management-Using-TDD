@@ -52,6 +52,12 @@ class SweetStore {
     return [...this.sweets].sort((a, b) => a.price - b.price);
   }
 
+  // Sort sweets by Price in descending order
+  sortByPriceDescending() {
+    return [...this.sweets].sort((a, b) => b.price - a.price);
+  }
+
+
 }
 
 export default SweetStore;
