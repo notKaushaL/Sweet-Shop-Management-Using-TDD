@@ -46,6 +46,12 @@ class SweetStore {
       sweet.price >= minPrice && sweet.price <= maxPrice
     );
   }
+
+  // Sort sweets by Price in ascending order
+  sortByPriceAsc() {
+    return [...this.sweets].sort((a, b) => a.price - b.price);
+  }
+
 }
 
 export default SweetStore;
