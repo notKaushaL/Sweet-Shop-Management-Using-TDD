@@ -82,3 +82,26 @@ describe('SweetRepository.deleteSweetById()', () => {
       .toThrow("Sweet with ID 9999 not found");
   });
 });
+
+
+
+// 1) Search Functionality
+
+    // Search by name
+describe('SweetRepository.searchByName()', () => {
+  let repo;
+
+  beforeEach(() => {
+    repo = new SweetRepository();
+    repo.addSweet(new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20));
+    repo.addSweet(new Sweet(1002, "Gulab Jamun", "Milk-Based", 30, 15));
+    repo.addSweet(new Sweet(1003, "Chocolate Barfi", "Chocolate", 60, 10));
+  });
+
+  // Test that throws TypeError of "repo.searchByName is not a function"
+  test('should return the sweet that match name', () => {
+    const results = repo.searchByName("Gulab");
+    expect(results).toHaveLength(1);
+    expect(results[0].name).toBe("Gulab Jamun");
+  });
+});
