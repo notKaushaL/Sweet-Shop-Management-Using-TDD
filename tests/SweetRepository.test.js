@@ -105,3 +105,23 @@ describe('SweetRepository.searchByName()', () => {
     expect(results[0].name).toBe("Gulab Jamun");
   });
 });
+
+
+
+// Search by Category
+describe('SweetRepository.searchByCategory()', () => {
+  let repo;
+  test('should return sweets that match the given category', () => {
+    repo = new SweetRepository();
+    repo.addSweet(new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20));
+    repo.addSweet(new Sweet(1002, "Gulab Jamun", "Milk-Based", 30, 15));
+    repo.addSweet(new Sweet(1003, "Rasgulla", "Milk-Based", 25, 10));
+    repo.addSweet(new Sweet(1004, "Chocolate Barfi", "Chocolate", 60, 5));
+
+    const results = repo.searchByCategory("Milk-Based");
+
+    expect(results).toHaveLength(2);
+    expect(results.map(s => s.name)).toEqual(["Gulab Jamun", "Rasgulla"]);
+  });
+
+});
