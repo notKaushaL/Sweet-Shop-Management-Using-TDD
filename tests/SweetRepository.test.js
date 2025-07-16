@@ -1,7 +1,8 @@
 
 
-const SweetRepository = require('../src/repository/SweetRepository');
-const Sweet = require('../src/models/Sweet');
+import SweetRepository from '../src/repository/SweetRepository.js';
+import Sweet from '../src/models/Sweet.js';
+
 
 
 // 1) Operations
@@ -108,7 +109,7 @@ describe('SweetRepository.searchByName()', () => {
 
 
 
-// Search by Category
+  // Search by Category
 describe('SweetRepository.searchByCategory()', () => {
   let repo;
   test('should return sweets that match the given category', () => {
@@ -123,5 +124,25 @@ describe('SweetRepository.searchByCategory()', () => {
     expect(results).toHaveLength(2);
     expect(results.map(s => s.name)).toEqual(["Gulab Jamun", "Rasgulla"]);
   });
+
+
+    // Search by Price Range
+describe('SweetRepository.searchByPriceRange()', () => {
+
+  let repo;
+
+  beforeEach(() => {
+    repo = new SweetRepository();
+    repo.addSweet(new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20));
+    repo.addSweet(new Sweet(1002, "Gulab Jamun", "Milk-Based", 30, 15));
+    repo.addSweet(new Sweet(1003, "Chocolate Barfi", "Chocolate", 60, 10));
+    repo.addSweet(new Sweet(1004, "Rasgulla", "Milk-Based", 20, 25));
+  });
+
+  test('should return sweets within given price range', () => {
+    const results = repo.searchByPriceRange(25, 55);
+    expect(results.map(s => s.name)).toEqual([ "Kaju Katli", "Gulab Jamun"]);
+  });
+});
 
 });

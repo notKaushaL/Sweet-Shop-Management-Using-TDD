@@ -49,7 +49,15 @@ class SweetRepository {
     );
     }
 
+    // Search by Price Range
+    searchByPriceRange(minPrice, maxPrice) {
+  return this.sweets.filter(sweet =>
+    sweet.price >= minPrice && sweet.price <= maxPrice
+  );
+}
+
+
 
 }
 
-module.exports = SweetRepository;
+export default SweetRepository;

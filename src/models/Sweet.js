@@ -11,4 +11,4 @@ class Sweet {
   }
 }
 
-module.exports = Sweet;
+export default Sweet;
