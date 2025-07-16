@@ -4,14 +4,13 @@ const SweetRepository = require('../src/repository/SweetRepository');
 const Sweet = require('../src/models/Sweet');
 
 
+// 1) Operations
 
-// Unit test for addSweet() method in SweetRepository
+// Unit test for Adding Sweets
 
 describe('SweetRepository.addSweet()', () => {
 
-
-    // Test: Should successfully add a new sweet to the repository
-
+    // Test: Should successfully add a new sweet
     test('should add a new sweet', () => {
     const repo = new SweetRepository();                           
     const sweet = new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20); 
@@ -24,7 +23,6 @@ describe('SweetRepository.addSweet()', () => {
 
 
   //  Test: Should throw an error when adding a sweet with duplicate ID
-
   test('should throw on duplicate ID', () => {
     const repo = new SweetRepository();                             
     const s1 = new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20);  
@@ -38,6 +36,7 @@ describe('SweetRepository.addSweet()', () => {
 
 
 // Test for viewing all sweets
+
 describe('SweetRepository.getAllSweets()', () => {
 
   // Test: Should return all added sweets
@@ -52,5 +51,34 @@ describe('SweetRepository.getAllSweets()', () => {
     const allSweets = repo.getAllSweets();
     expect(allSweets).toHaveLength(2);
     expect(allSweets.map(s => s.name)).toEqual(["Kaju Katli", "Gulab Jamun"]);
+  });
+});
+
+// Test for deleting sweets
+describe('SweetRepository.deleteSweetById()', () => {
+
+  // Should delete an existing sweet
+  test('should delete the sweet with the given ID', () => {
+    const repo = new SweetRepository();
+    const s1 = new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20);
+    const s2 = new Sweet(1002, "Gulab Jamun", "Milk-Based", 10, 30);
+    repo.addSweet(s1);
+    repo.addSweet(s2);
+
+    repo.deleteSweetById(1001);               
+    const sweets = repo.getAllSweets();       
+
+    expect(sweets).toHaveLength(1);           
+    expect(sweets[0].id).toBe(1002);          
+  });
+
+  // Should throw error if sweet not found
+  test('should throw error if sweet ID not found', () => {
+    const repo = new SweetRepository();
+    const sweet = new Sweet(1003, "Rasgulla", "Milk-Based", 15, 25);
+    repo.addSweet(sweet);
+
+    expect(() => repo.deleteSweetById(9999))  
+      .toThrow("Sweet with ID 9999 not found");
   });
 });
