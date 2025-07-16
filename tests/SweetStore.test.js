@@ -84,7 +84,7 @@ describe('SweetStore.deleteSweetById()', () => {
 
 
 
-// 1) Search Functionality
+// 2) Search Functionality
 
     // Search by name
 describe('SweetStore.searchByName()', () => {
@@ -144,3 +144,23 @@ describe('SweetStore.searchByPriceRange()', () => {
 });
 
 });
+
+
+
+// 3) Sorting by Price Ascending
+describe('SweetStore.sortByPriceAsc()', () => {
+  let store;
+
+  beforeEach(() => {
+    store = new SweetStore();
+    store.addSweet(new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20));
+    store.addSweet(new Sweet(1002, "Gulab Jamun", "Milk-Based", 30, 15));
+    store.addSweet(new Sweet(1003, "Chocolate Barfi", "Chocolate", 60, 10));
+  });
+
+  test('should return sweets sorted by price in ascending order', () => {
+    const results = store.sortByPriceAsc();
+    expect(results.map(s => s.name)).toEqual(["Gulab Jamun", "Kaju Katli", "Chocolate Barfi"]);
+  });
+});
+
