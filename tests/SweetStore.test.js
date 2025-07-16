@@ -1,22 +1,20 @@
 
-
-import SweetRepository from '../src/repository/SweetRepository.js';
+import SweetStore from '../src/store/SweetStore.js';
 import Sweet from '../src/models/Sweet.js';
-
 
 
 // 1) Operations
 
 // Unit test for Adding Sweets
 
-describe('SweetRepository.addSweet()', () => {
+describe('SweetStore.addSweet()', () => {
 
     // Test: Should successfully add a new sweet
     test('should add a new sweet', () => {
-    const repo = new SweetRepository();                           
+    const store = new SweetStore();                           
     const sweet = new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20); 
-    repo.addSweet(sweet);                                         
-    const all = repo.getAllSweets();                                
+    store.addSweet(sweet);                                         
+    const all = store.getAllSweets();                                
 
     expect(all).toHaveLength(1);              
     expect(all[0].name).toBe("Kaju Katli");   
@@ -25,12 +23,12 @@ describe('SweetRepository.addSweet()', () => {
 
   //  Test: Should throw an error when adding a sweet with duplicate ID
   test('should throw on duplicate ID', () => {
-    const repo = new SweetRepository();                             
+    const store = new SweetStore();                             
     const s1 = new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20);  
     const s2 = new Sweet(1001, "Gulab Jamun", "Milk-Based", 10, 30); 
 
-    repo.addSweet(s1);                                              
-    expect(() => repo.addSweet(s2))                                 
+    store.addSweet(s1);                                              
+    expect(() => store.addSweet(s2))                                 
       .toThrow("Sweet with this ID already exists");             // Ensure duplicate check works
   });
 });
@@ -38,36 +36,36 @@ describe('SweetRepository.addSweet()', () => {
 
 // Test for viewing all sweets
 
-describe('SweetRepository.getAllSweets()', () => {
+describe('SweetStore.getAllSweets()', () => {
 
   // Test: Should return all added sweets
   test('should return all sweets in the repository', () => {
-    const repo = new SweetRepository();
+    const store = new SweetStore();
     const s1 = new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20);
     const s2 = new Sweet(1002, "Gulab Jamun", "Milk-Based", 10, 30);
-    
-    repo.addSweet(s1);
-    repo.addSweet(s2);
-    
-    const allSweets = repo.getAllSweets();
+
+    store.addSweet(s1);
+    store.addSweet(s2);
+
+    const allSweets = store.getAllSweets();
     expect(allSweets).toHaveLength(2);
     expect(allSweets.map(s => s.name)).toEqual(["Kaju Katli", "Gulab Jamun"]);
   });
 });
 
 // Test for deleting sweets
-describe('SweetRepository.deleteSweetById()', () => {
+describe('SweetStore.deleteSweetById()', () => {
 
   // Should delete an existing sweet
   test('should delete the sweet with the given ID', () => {
-    const repo = new SweetRepository();
+    const store = new SweetStore();
     const s1 = new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20);
     const s2 = new Sweet(1002, "Gulab Jamun", "Milk-Based", 10, 30);
-    repo.addSweet(s1);
-    repo.addSweet(s2);
+    store.addSweet(s1);
+    store.addSweet(s2);
 
-    repo.deleteSweetById(1001);               
-    const sweets = repo.getAllSweets();       
+    store.deleteSweetById(1001);
+    const sweets = store.getAllSweets();
 
     expect(sweets).toHaveLength(1);           
     expect(sweets[0].id).toBe(1002);          
@@ -75,11 +73,11 @@ describe('SweetRepository.deleteSweetById()', () => {
 
   // Should throw error if sweet not found
   test('should throw error if sweet ID not found', () => {
-    const repo = new SweetRepository();
+    const store = new SweetStore();
     const sweet = new Sweet(1003, "Rasgulla", "Milk-Based", 15, 25);
-    repo.addSweet(sweet);
+    store.addSweet(sweet);
 
-    expect(() => repo.deleteSweetById(9999))  
+    expect(() => store.deleteSweetById(9999))
       .toThrow("Sweet with ID 9999 not found");
   });
 });
@@ -89,19 +87,19 @@ describe('SweetRepository.deleteSweetById()', () => {
 // 1) Search Functionality
 
     // Search by name
-describe('SweetRepository.searchByName()', () => {
-  let repo;
+describe('SweetStore.searchByName()', () => {
+  let store;
 
   beforeEach(() => {
-    repo = new SweetRepository();
-    repo.addSweet(new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20));
-    repo.addSweet(new Sweet(1002, "Gulab Jamun", "Milk-Based", 30, 15));
-    repo.addSweet(new Sweet(1003, "Chocolate Barfi", "Chocolate", 60, 10));
+    store = new SweetStore();
+    store.addSweet(new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20));
+    store.addSweet(new Sweet(1002, "Gulab Jamun", "Milk-Based", 30, 15));
+    store.addSweet(new Sweet(1003, "Chocolate Barfi", "Chocolate", 60, 10));
   });
 
   // Test that throws TypeError of "repo.searchByName is not a function"
   test('should return the sweet that match name', () => {
-    const results = repo.searchByName("Gulab");
+    const results = store.searchByName("Gulab");
     expect(results).toHaveLength(1);
     expect(results[0].name).toBe("Gulab Jamun");
   });
@@ -110,16 +108,16 @@ describe('SweetRepository.searchByName()', () => {
 
 
   // Search by Category
-describe('SweetRepository.searchByCategory()', () => {
-  let repo;
+describe('SweetStore.searchByCategory()', () => {
+  let store;
   test('should return sweets that match the given category', () => {
-    repo = new SweetRepository();
-    repo.addSweet(new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20));
-    repo.addSweet(new Sweet(1002, "Gulab Jamun", "Milk-Based", 30, 15));
-    repo.addSweet(new Sweet(1003, "Rasgulla", "Milk-Based", 25, 10));
-    repo.addSweet(new Sweet(1004, "Chocolate Barfi", "Chocolate", 60, 5));
+    store = new SweetStore();
+    store.addSweet(new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20));
+    store.addSweet(new Sweet(1002, "Gulab Jamun", "Milk-Based", 30, 15));
+    store.addSweet(new Sweet(1003, "Rasgulla", "Milk-Based", 25, 10));
+    store.addSweet(new Sweet(1004, "Chocolate Barfi", "Chocolate", 60, 5));
 
-    const results = repo.searchByCategory("Milk-Based");
+    const results = store.searchByCategory("Milk-Based");
 
     expect(results).toHaveLength(2);
     expect(results.map(s => s.name)).toEqual(["Gulab Jamun", "Rasgulla"]);
@@ -127,20 +125,20 @@ describe('SweetRepository.searchByCategory()', () => {
 
 
     // Search by Price Range
-describe('SweetRepository.searchByPriceRange()', () => {
+describe('SweetStore.searchByPriceRange()', () => {
 
-  let repo;
+  let store;
 
   beforeEach(() => {
-    repo = new SweetRepository();
-    repo.addSweet(new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20));
-    repo.addSweet(new Sweet(1002, "Gulab Jamun", "Milk-Based", 30, 15));
-    repo.addSweet(new Sweet(1003, "Chocolate Barfi", "Chocolate", 60, 10));
-    repo.addSweet(new Sweet(1004, "Rasgulla", "Milk-Based", 20, 25));
+    store = new SweetStore();
+    store.addSweet(new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20));
+    store.addSweet(new Sweet(1002, "Gulab Jamun", "Milk-Based", 30, 15));
+    store.addSweet(new Sweet(1003, "Chocolate Barfi", "Chocolate", 60, 10));
+    store.addSweet(new Sweet(1004, "Rasgulla", "Milk-Based", 20, 25));
   });
 
   test('should return sweets within given price range', () => {
-    const results = repo.searchByPriceRange(25, 55);
+    const results = store.searchByPriceRange(25, 55);
     expect(results.map(s => s.name)).toEqual([ "Kaju Katli", "Gulab Jamun"]);
   });
 });
