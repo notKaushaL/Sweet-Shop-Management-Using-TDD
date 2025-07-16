@@ -58,23 +58,45 @@ class SweetStore {
   }
 
 
+
   // Reduces stock after a successful purchase
-purchaseSweet(id, quantity) {
+  purchaseSweet(id, quantity) {
   const sweet = this.sweets.find(s => s.id === id);
 
-  // Throw error if no sweet is found with the given ID (Test - 2)
-  if (!sweet) {
-    throw new Error(`Sweet with ID ${id} not found`);
+    // Throw error if no sweet is found with the given ID (Test - 2)
+    if (!sweet) {
+      throw new Error(`Sweet with ID ${id} not found`);
+    }
+
+    // Throw error if requested quantity exceeds available stock (Test - 3)
+      if (sweet.quantity < quantity) {
+      throw new Error("Not enough stock to complete the purchase");
+    }
+
+    // Reduce the available quantity after a successful purchase (Test -1)
+    sweet.quantity -= quantity; 
   }
 
-  // Throw error if requested quantity exceeds available stock (Test - 3)
-    if (sweet.quantity < quantity) {
-    throw new Error("Not enough stock to complete the purchase");
-  }
 
-   // Reduce the available quantity after a successful purchase (Test -1)
-  sweet.quantity -= quantity; 
-}
+  // Restock sweet by ID
+  restockSweet(id, quantityToAdd) {
+
+     // Check for invalid restock quantity (Test - 3)
+    if (quantityToAdd <= 0) {
+      throw new Error("Restock quantity must be a positive number");
+    }
+
+     // Find the sweet by ID (All Tests)
+    const sweet = this.sweets.find(s => s.id === id);
+
+     // If sweet not found, throw error (related to Test 2)
+    if (!sweet) {
+      throw new Error(`Sweet with ID ${id} not found`);
+    }
+
+     // Increase the sweet’s quantity (Test 1 success path)
+    sweet.quantity += quantityToAdd;
+  }
 
 }
 

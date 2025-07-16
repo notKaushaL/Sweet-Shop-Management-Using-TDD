@@ -218,3 +218,36 @@ describe('SweetStore.purchaseSweet()', () => {
 
 });
 
+
+
+// Tests for restocking sweets
+
+describe('SweetStore.restockSweet()', () => {
+
+  let store;
+
+  beforeEach(() => {
+    store = new SweetStore();
+    store.addSweet(new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20));
+  });
+
+    // Test 1: Should increase stock quantity correctly
+    test('should restock a sweet by increasing quantity', () => {
+      store.restockSweet(1001, 10);
+      const sweet = store.getAllSweets().find(s => s.id === 1001);
+      expect(sweet.quantity).toBe(30);  // 20 + 10
+    });
+
+    // Test 2: Should throw error if sweet ID does not exist
+    test('should throw error if sweet ID not found', () => {
+      expect(() => store.restockSweet(9999, 5))
+          .toThrow("Sweet with ID 9999 not found");
+    });
+
+    // Test 3: Should throw error for invalid restock quantity
+    test('should throw error for invalid restock quantity', () => {
+      expect(() => store.restockSweet(1001, -5))
+          .toThrow("Restock quantity must be a positive number");
+    });
+
+});
