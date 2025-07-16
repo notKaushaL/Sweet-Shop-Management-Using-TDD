@@ -184,3 +184,37 @@ describe('SweetStore.sortByPriceDescending()', () => {
 });
 
 
+// Purchase Functionality
+
+describe('SweetStore.purchaseSweet()', () => {
+
+  // Test 1: Successfully reduce stock after valid purchase
+  test('should reduce quantity of sweet after valid purchase', () => {
+    const store = new SweetStore();
+    store.addSweet(new Sweet(1001, "Kaju Katli", "Nut-Based", 50, 20));
+
+    store.purchaseSweet(1001, 5); // purchase 5 units
+
+    const sweet = store.getAllSweets()[0];
+    expect(sweet.quantity).toBe(15); // 20 - 5 = 15
+  });
+
+  // Test 2: Throw error if purchase quantity exceeds stock
+  test('should throw error if requested quantity exceeds available stock', () => {
+    const store = new SweetStore();
+    store.addSweet(new Sweet(1002, "Gulab Jamun", "Milk-Based", 30, 3));
+
+    expect(() => store.purchaseSweet(1002, 5))
+      .toThrow("Not enough stock to complete the purchase");
+  });
+
+  // Test 3: Throw error if sweet with given ID does not exist
+  test('should throw error if sweet with the given ID is not found', () => {
+    const store = new SweetStore();
+
+    expect(() => store.purchaseSweet(9999, 2))
+      .toThrow("Sweet with ID 9999 not found");
+  });
+
+});
+
