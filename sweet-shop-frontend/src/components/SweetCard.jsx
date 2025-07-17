@@ -28,22 +28,22 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
         padding: '0.75rem',
         display: 'flex',
         flexDirection: 'column',
-        width: '100%',
-        minWidth: '100%',
+        width: '90%',
+        minWidth: '95%',
         height: '100%',
         justifyContent: 'space-between'
       }}>
       <div style={{ marginBottom: '0.5rem' }}>
         <h3 style={{ 
           color: '#D4AF37', 
-          fontSize: '1rem', 
+          fontSize: '1.4rem', 
           fontWeight: 'bold',
           marginBottom: '0.4rem' 
         }}>
           {sweet.name}
         </h3>
         <div style={{ color: '#F0E68C', marginBottom: '0.5rem', fontSize: '0.85rem' }}>
-          <span style={{ fontWeight: 'bold' }}>ID:</span> {sweet.id}
+          <span style={{ fontWeight: 'bold' }}>ID :</span>   {sweet.id}
         </div>
         <div style={{ 
           color: '#F0E68C', 

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import SweetCard from './components/SweetCard';
@@ -14,6 +13,7 @@ function App() {
   const [showPriceFilter, setShowPriceFilter] = useState(false);
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
+  const [sortOrder, setSortOrder] = useState('none'); // 'none', 'asc', 'desc'
 
   // Load sweets when component mounts
   useEffect(() => {
@@ -73,98 +73,174 @@ function App() {
     
     return matchesSearch && matchesCategory && matchesMinPrice && matchesMaxPrice;
   });
+  
+  // Apply sorting
+  const sortedSweets = [...filteredSweets].sort((a, b) => {
+    if (sortOrder === 'asc') {
+      return a.price - b.price;
+    } else if (sortOrder === 'desc') {
+      return b.price - a.price;
+    }
+    return 0; // No sorting
+  });
 
   return (
-    <div style={{ backgroundColor: '#000000', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ backgroundColor: '#0B0C10', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Header />
       
       <main style={{ width: '100%', margin: '0 auto', padding: '1.5rem', flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
         <div style={{ 
-
           display: 'flex', 
-          flexDirection: 'column',
-          justifyContent: 'space-between', 
+          justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '0.0125rem',
+          marginBottom: '1.25rem',
           width: '100%',
-          padding: '0 0.5rem'
+          padding: '0.5rem 0.75rem',
+          backgroundColor: '#1A1A1A',
+          borderRadius: '8px',
+          border: '1px solid #D4AF37',
+          gap: '1rem'
         }}>
+          {/* Search input - wider */}
+          <input 
+            className="input-hover"
+            type="text"
+            placeholder="Search sweets..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={{
+              padding: '0.6rem 1.2rem',
+              backgroundColor: '#232121',
+              border: '1px solid #D4AF37',
+              borderRadius: '4px',
+              color: 'white',
+              outline: 'none',
+              flex: '1',
+              minWidth: '180px',
+              fontSize: '1rem'
+            }}
+          />
           
+          {/* Category filter - wider */}
+          <select
+            className="input-hover"
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            style={{
+              padding: '0.6rem 1.2rem',
+              backgroundColor: '#232121',
+              border: '1px solid #D4AF37',
+              borderRadius: '4px',
+              color: '#D4AF37',
+              outline: 'none',
+              flex: '0 0 180px',
+              fontSize: '1rem'
+            }}
+          >
+            <option value="all">All Categories</option>
+            {/* Get unique categories */}
+            {[...new Set(sweets.map(sweet => sweet.category))].map(category => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
           
-          <div style={{ display: 'flex', gap: '0.75rem', flex: '1', justifyContent: 'flex-end', maxWidth: '70%' }}>
-            {/* Search input */}
-            <input 
-              className="input-hover"
-              type="text"
-              placeholder="Search sweets..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+          {/* Sort Controls - wider buttons */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <span style={{ color: '#D4AF37', fontWeight: 'bold', fontSize: '1rem' }}>Sort:</span>
+            <button
+              className="button-hover"
+              onClick={() => setSortOrder('asc')}
               style={{
-                padding: '0.5rem 1rem',
-                backgroundColor: '#1A1A1A',
-                border: '1px solid #D4AF37',
+                backgroundColor: sortOrder === 'asc' ? '#B8860B' : '#232121',
+                color: sortOrder === 'asc' ? 'white' : '#D4AF37',
+                padding: '0.6rem 1rem',
                 borderRadius: '4px',
-                color: 'white',
-                outline: 'none'
-              }}
-            />
-
-            {/* Category filter */}
-            <select
-              className="input-hover"
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              style={{
-                padding: '0.5rem 1rem',
-                backgroundColor: '#1A1A1A',
+                fontWeight: 'bold',
+                cursor: 'pointer',
                 border: '1px solid #D4AF37',
-                borderRadius: '4px',
-                color: '#D4AF37',
-                outline: 'none'
+                fontSize: '0.95rem',
+                whiteSpace: 'nowrap'
               }}
             >
-              <option value="all">All Categories</option>
-              {/* Get unique categories */}
-              {[...new Set(sweets.map(sweet => sweet.category))].map(category => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-
-            {/* Price filter button */}
+              ↑ Low to High
+            </button>
+            <button
+              className="button-hover"
+              onClick={() => setSortOrder('desc')}
+              style={{
+                backgroundColor: sortOrder === 'desc' ? '#B8860B' : '#232121',
+                color: sortOrder === 'desc' ? 'white' : '#D4AF37',
+                padding: '0.6rem 1rem',
+                borderRadius: '4px',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                border: '1px solid #D4AF37',
+                fontSize: '0.95rem',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              ↓ High to Low
+            </button>
+          </div>
+          
+          {/* Price filter and Add New buttons */}
+          <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
             <button
               className="button-hover"
               onClick={() => setShowPriceFilter(!showPriceFilter)}
               style={{
-                backgroundColor: showPriceFilter ? '#B8860B' : '#1A1A1A',
+                backgroundColor: showPriceFilter ? '#B8860B' : '#232121',
                 color: showPriceFilter ? 'white' : '#D4AF37',
-                padding: '0.5rem 1rem',
+                padding: '0.6rem 1rem',
                 borderRadius: '4px',
                 fontWeight: 'bold',
                 cursor: 'pointer',
-                border: '1px solid #D4AF37'
+                border: '1px solid #D4AF37',
+                fontSize: '0.95rem',
+                whiteSpace: 'nowrap'
               }}
             >
-              {showPriceFilter ? 'Hide Price Filter' : 'Filter by Price'}
+              {showPriceFilter ? 'Hide Filter' : 'Price Filter'}
             </button>
             
-            {/* Add New Sweet button */}
             <button
               className="button-hover"
               onClick={() => setShowAddForm(!showAddForm)}
               style={{
-                backgroundColor: '#D4AF37',
-                color: '#000000',
-                padding: '0.5rem 1rem',
+                backgroundColor: showAddForm ? '#B8860B' : '#D4AF37',
+                color: showAddForm ? 'white' : '#000000',
+                padding: '0.6rem 1rem',
                 borderRadius: '4px',
                 fontWeight: 'bold',
                 cursor: 'pointer',
-                border: 'none'
+                border: 'none',
+                fontSize: '0.95rem',
+                whiteSpace: 'nowrap'
               }}
             >
-              {showAddForm ? 'Hide Form' : 'Add New Sweet'}
+              {showAddForm ? 'Hide Form' : '+ New Sweet'}
             </button>
+            
+            {sortOrder !== 'none' && (
+              <button
+                className="button-hover"
+                onClick={() => setSortOrder('none')}
+                style={{
+                  backgroundColor: '#1A1A1A',
+                  color: '#F44336',
+                  padding: '0.6rem 1rem',
+                  borderRadius: '4px',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  border: '1px solid #F44336',
+                  fontSize: '0.95rem'
+                }}
+              >
+                Clear Sort
+              </button>
+            )}
           </div>
         </div>
 
@@ -269,7 +345,7 @@ function App() {
                     : ` Up to ₹${maxPrice}`
                 }
                 <span style={{ color: '#B8860B' }}>
-                  {" "}({filteredSweets.length} {filteredSweets.length === 1 ? 'sweet' : 'sweets'} match)
+                  {" "}({sortedSweets.length} {sortedSweets.length === 1 ? 'sweet' : 'sweets'} match)
                 </span>
               </div>
             )}
@@ -290,8 +366,8 @@ function App() {
           padding: '0.75rem',
           flex: '1'
         }}>
-          {filteredSweets.length > 0 ? (
-            filteredSweets.map(sweet => (
+          {sortedSweets.length > 0 ? (
+            sortedSweets.map(sweet => (
               <SweetCard 
                 key={sweet.id} 
                 sweet={sweet} 

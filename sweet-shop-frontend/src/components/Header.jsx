@@ -19,16 +19,17 @@ function Header() {
           fontSize: '1.8rem', 
           fontWeight: 'bold',
           color: '#D4AF37',
-          margin: '0',
+          margin: '-0.5rem',
           display: 'inline-block'
         }}>
           🛒 Sweet Shop Management 
         </h1>
         <p style={{ 
           color: '#F0E68C', 
-          marginTop: '0.1rem',
+          fontWeight: 'bold',
+          marginTop: '0.01rem',
           fontSize: '1rem',
-          marginLeft: '2.2rem'
+          marginLeft: '2.6rem'
         }}>
           Sweet people have SWEET taste !
         </p>
