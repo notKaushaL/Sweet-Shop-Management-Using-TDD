@@ -1,1 +1,31 @@
-@import "tailwindcss";
+/* Base styles for the Sweet Shop Management System */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000000;
+  color: #D4AF37;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #0D0D0D;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #D4AF37;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #F0E68C;
+}
