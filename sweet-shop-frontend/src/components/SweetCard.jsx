@@ -58,8 +58,25 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
             {sweet.category}
           </span>
         </div>
-        <div style={{ color: '#F0E68C', marginBottom: '0.25rem' }}>
-          <span style={{ fontWeight: 'bold' }}>Price:</span> ₹{sweet.price}
+        <div style={{ 
+          color: '#F0E68C', 
+          marginBottom: '0.25rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between'
+        }}>
+          <span style={{ fontWeight: 'bold' }}>Price:</span>
+          <span style={{
+            backgroundColor: '#000000',
+            color: '#D4AF37',
+            padding: '0.15rem 0.5rem',
+            borderRadius: '4px',
+            fontSize: '1rem',
+            fontWeight: 'bold',
+            border: '1px solid #D4AF37'
+          }}>
+            ₹{sweet.price}
+          </span>
         </div>
         <div style={{ 
           color: sweet.quantity > 10 ? '#4CAF50' : sweet.quantity > 0 ? '#FFC107' : '#F44336',

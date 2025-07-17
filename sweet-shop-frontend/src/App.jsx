@@ -10,6 +10,9 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [showAddForm, setShowAddForm] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [showPriceFilter, setShowPriceFilter] = useState(false);
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
 
   // Load sweets when component mounts
   useEffect(() => {
@@ -52,7 +55,7 @@ function App() {
     }
   };
 
-  // Filter sweets based on search term and category
+  // Filter sweets based on search term, category, and price range
   const filteredSweets = sweets.filter(sweet => {
     // Filter by search term
     const matchesSearch = 
@@ -63,7 +66,11 @@ function App() {
     const matchesCategory = selectedCategory === 'all' || 
       sweet.category.toLowerCase() === selectedCategory.toLowerCase();
     
-    return matchesSearch && matchesCategory;
+    // Filter by price range
+    const matchesMinPrice = minPrice === '' || sweet.price >= Number(minPrice);
+    const matchesMaxPrice = maxPrice === '' || sweet.price <= Number(maxPrice);
+    
+    return matchesSearch && matchesCategory && matchesMinPrice && matchesMaxPrice;
   });
 
   return (
@@ -80,7 +87,16 @@ function App() {
           <div>
             <h1 style={{ color: '#D4AF37', fontSize: '1.8rem', marginBottom: '0.25rem' }}>Sweet Inventory</h1>
             <p style={{ color: '#B8860B', fontSize: '0.9rem' }}>
-              {filteredSweets.length} {filteredSweets.length === 1 ? 'sweet' : 'sweets'} {selectedCategory !== 'all' ? `in ${selectedCategory}` : 'total'}
+              {filteredSweets.length} {filteredSweets.length === 1 ? 'sweet' : 'sweets'} 
+              {selectedCategory !== 'all' ? ` in ${selectedCategory}` : ' total'}
+              {(minPrice !== '' || maxPrice !== '') && 
+                (minPrice !== '' && maxPrice !== '' 
+                  ? `, price range: ₹${minPrice} - ₹${maxPrice}`
+                  : minPrice !== '' 
+                    ? `, price: ₹${minPrice}+`
+                    : `, price: up to ₹${maxPrice}`
+                )
+              }
             </p>
           </div>
           
@@ -122,6 +138,22 @@ function App() {
                 </option>
               ))}
             </select>
+
+            {/* Price filter button */}
+            <button
+              onClick={() => setShowPriceFilter(!showPriceFilter)}
+              style={{
+                backgroundColor: showPriceFilter ? '#B8860B' : '#1A1A1A',
+                color: showPriceFilter ? 'white' : '#D4AF37',
+                padding: '0.5rem 1rem',
+                borderRadius: '4px',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                border: '1px solid #D4AF37'
+              }}
+            >
+              {showPriceFilter ? 'Hide Price Filter' : 'Filter by Price'}
+            </button>
             
             {/* Add New Sweet button */}
             <button
@@ -141,6 +173,113 @@ function App() {
           </div>
         </div>
 
+        {/* Price Range Filter */}
+        {showPriceFilter && (
+          <div style={{
+            backgroundColor: '#1A1A1A',
+            border: '1px solid #D4AF37',
+            borderRadius: '8px',
+            padding: '1rem',
+            marginBottom: '1.5rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '0.75rem'
+          }}>
+            <h3 style={{ color: '#D4AF37', fontSize: '1rem', fontWeight: 'bold' }}>
+              Price Range Filter
+            </h3>
+            
+            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+              <div style={{ flex: '1' }}>
+                <label style={{ 
+                  display: 'block', 
+                  color: '#D4AF37', 
+                  marginBottom: '0.25rem',
+                  fontSize: '0.9rem'
+                }}>
+                  Minimum Price (₹)
+                </label>
+                <input
+                  type="number"
+                  value={minPrice}
+                  onChange={(e) => setMinPrice(e.target.value)}
+                  placeholder="Min Price"
+                  min="0"
+                  style={{
+                    width: '100%',
+                    padding: '0.5rem',
+                    backgroundColor: '#232121',
+                    border: '1px solid #D4AF37',
+                    borderRadius: '4px',
+                    color: 'white'
+                  }}
+                />
+              </div>
+              
+              <div style={{ flex: '1' }}>
+                <label style={{ 
+                  display: 'block', 
+                  color: '#D4AF37', 
+                  marginBottom: '0.25rem',
+                  fontSize: '0.9rem'
+                }}>
+                  Maximum Price (₹)
+                </label>
+                <input
+                  type="number"
+                  value={maxPrice}
+                  onChange={(e) => setMaxPrice(e.target.value)}
+                  placeholder="Max Price"
+                  min="0"
+                  style={{
+                    width: '100%',
+                    padding: '0.5rem',
+                    backgroundColor: '#232121',
+                    border: '1px solid #D4AF37',
+                    borderRadius: '4px',
+                    color: 'white'
+                  }}
+                />
+              </div>
+              
+              <button
+                onClick={() => {
+                  setMinPrice('');
+                  setMaxPrice('');
+                }}
+                style={{
+                  backgroundColor: '#F44336',
+                  color: 'white',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '4px',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  border: 'none',
+                  marginTop: '1.5rem'
+                }}
+              >
+                Clear
+              </button>
+            </div>
+            
+            {/* Price Range Summary */}
+            {(minPrice !== '' || maxPrice !== '') && (
+              <div style={{ color: '#F0E68C', fontSize: '0.9rem' }}>
+                Currently filtering: 
+                {minPrice !== '' && maxPrice !== '' 
+                  ? ` ₹${minPrice} - ₹${maxPrice}`
+                  : minPrice !== '' 
+                    ? ` ₹${minPrice} and above`
+                    : ` Up to ₹${maxPrice}`
+                }
+                <span style={{ color: '#B8860B' }}>
+                  {" "}({filteredSweets.length} {filteredSweets.length === 1 ? 'sweet' : 'sweets'} match)
+                </span>
+              </div>
+            )}
+          </div>
+        )}
+        
         {/* Add Sweet Form */}
         {showAddForm && (
           <AddSweetForm onSweetAdded={() => setSweets([...sweetService.getAllSweets()])} />
