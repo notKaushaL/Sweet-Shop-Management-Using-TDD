@@ -22,8 +22,8 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
     <div 
       className="glass-hover"
       style={{
-        backgroundColor: '#1A1A1A',
-        border: '1px solid #D4AF37',
+        backgroundColor: '#1F2833',
+        border: '1px solid #66FCF1',
         borderRadius: '8px',
         padding: '0.75rem',
         display: 'flex',
@@ -35,18 +35,18 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
       }}>
       <div style={{ marginBottom: '0.5rem' }}>
         <h3 style={{ 
-          color: '#D4AF37', 
+          color: '#66FCF1', 
           fontSize: '1.4rem', 
           fontWeight: 'bold',
           marginBottom: '0.4rem' 
         }}>
           {sweet.name}
         </h3>
-        <div style={{ color: '#F0E68C', marginBottom: '0.5rem', fontSize: '0.85rem' }}>
+        <div style={{ color: '#C5C6C7', marginBottom: '0.5rem', fontSize: '0.85rem' }}>
           <span style={{ fontWeight: 'bold' }}>ID :</span>   {sweet.id}
         </div>
         <div style={{ 
-          color: '#F0E68C', 
+          color: '#C5C6C7', 
           marginBottom: '0.75rem',
           display: 'flex',
           alignItems: 'center',
@@ -54,8 +54,8 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
         }}>
           <span style={{ fontWeight: 'bold', marginRight: '0.25rem' }}>Category:</span> 
           <span style={{
-            backgroundColor: '#D4AF37',
-            color: 'black',
+            backgroundColor: '#66FCF1',
+            color: '#0B0C10',
             padding: '0.3rem 0.6rem',
             borderRadius: '4px',
             fontSize: '0.9rem',
@@ -65,7 +65,7 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
           </span>
         </div>
         <div style={{ 
-          color: '#F0E68C', 
+          color: '#C5C6C7', 
           marginBottom: '0.5rem',
           display: 'flex',
           alignItems: 'center',
@@ -91,7 +91,7 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
           fontWeight: 'bold',
           fontSize: '0.95rem'
         }}>
-          <span style={{ color: '#F0E68C' }}>Stock:</span> {sweet.quantity} pcs
+          <span style={{ color: '#C5C6C7' }}>Stock:</span> {sweet.quantity} pcs
         </div>
       </div>
       
@@ -105,8 +105,8 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
           className="button-hover"
           onClick={handlePurchase}
           style={{
-            backgroundColor: '#D4AF37',
-            color: '#000000',
+            backgroundColor: '#66FCF1',
+            color: '#0B0C10',
             border: 'none',
             padding: '0.6rem',
             borderRadius: '4px',
@@ -123,7 +123,7 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
           className="button-hover"
           onClick={handleRestock}
           style={{
-            backgroundColor: '#4CAF50',
+            backgroundColor: '#45A29E',
             color: 'white',
             border: 'none',
             padding: '0.6rem',

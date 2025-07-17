@@ -96,9 +96,9 @@ function App() {
           marginBottom: '1.25rem',
           width: '100%',
           padding: '0.5rem 0.75rem',
-          backgroundColor: '#1A1A1A',
+          backgroundColor: '#1F2833',
           borderRadius: '8px',
-          border: '1px solid #D4AF37',
+          border: '1px solid #66FCF1',
           gap: '1rem'
         }}>
           {/* Search input - wider */}
@@ -110,8 +110,8 @@ function App() {
             onChange={(e) => setSearchTerm(e.target.value)}
             style={{
               padding: '0.6rem 1.2rem',
-              backgroundColor: '#232121',
-              border: '1px solid #D4AF37',
+              backgroundColor: '#1F2833',
+              border: '1px solid #66FCF1',
               borderRadius: '4px',
               color: 'white',
               outline: 'none',
@@ -128,10 +128,10 @@ function App() {
             onChange={(e) => setSelectedCategory(e.target.value)}
             style={{
               padding: '0.6rem 1.2rem',
-              backgroundColor: '#232121',
-              border: '1px solid #D4AF37',
+              backgroundColor: '#1F2833',
+              border: '1px solid #66FCF1',
               borderRadius: '4px',
-              color: '#D4AF37',
+              color: '#66FCF1',
               outline: 'none',
               flex: '0 0 180px',
               fontSize: '1rem'
@@ -148,18 +148,18 @@ function App() {
           
           {/* Sort Controls - wider buttons */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <span style={{ color: '#D4AF37', fontWeight: 'bold', fontSize: '1rem' }}>Sort:</span>
+            <span style={{ color: '#66FCF1', fontWeight: 'bold', fontSize: '1rem' }}>Sort:</span>
             <button
               className="button-hover"
               onClick={() => setSortOrder('asc')}
               style={{
-                backgroundColor: sortOrder === 'asc' ? '#B8860B' : '#232121',
-                color: sortOrder === 'asc' ? 'white' : '#D4AF37',
+                backgroundColor: sortOrder === 'asc' ? '#45A29E' : '#1F2833',
+                color: sortOrder === 'asc' ? 'white' : '#66FCF1',
                 padding: '0.6rem 1rem',
                 borderRadius: '4px',
                 fontWeight: 'bold',
                 cursor: 'pointer',
-                border: '1px solid #D4AF37',
+                border: '1px solid #66FCF1',
                 fontSize: '0.95rem',
                 whiteSpace: 'nowrap'
               }}
@@ -170,13 +170,13 @@ function App() {
               className="button-hover"
               onClick={() => setSortOrder('desc')}
               style={{
-                backgroundColor: sortOrder === 'desc' ? '#B8860B' : '#232121',
-                color: sortOrder === 'desc' ? 'white' : '#D4AF37',
+                backgroundColor: sortOrder === 'desc' ? '#45A29E' : '#1F2833',
+                color: sortOrder === 'desc' ? 'white' : '#66FCF1',
                 padding: '0.6rem 1rem',
                 borderRadius: '4px',
                 fontWeight: 'bold',
                 cursor: 'pointer',
-                border: '1px solid #D4AF37',
+                border: '1px solid #66FCF1',
                 fontSize: '0.95rem',
                 whiteSpace: 'nowrap'
               }}
@@ -191,13 +191,13 @@ function App() {
               className="button-hover"
               onClick={() => setShowPriceFilter(!showPriceFilter)}
               style={{
-                backgroundColor: showPriceFilter ? '#B8860B' : '#232121',
-                color: showPriceFilter ? 'white' : '#D4AF37',
+                backgroundColor: showPriceFilter ? '#45A29E' : '#1F2833',
+                color: showPriceFilter ? 'white' : '#66FCF1',
                 padding: '0.6rem 1rem',
                 borderRadius: '4px',
                 fontWeight: 'bold',
                 cursor: 'pointer',
-                border: '1px solid #D4AF37',
+                border: '1px solid #66FCF1',
                 fontSize: '0.95rem',
                 whiteSpace: 'nowrap'
               }}
@@ -209,8 +209,8 @@ function App() {
               className="button-hover"
               onClick={() => setShowAddForm(!showAddForm)}
               style={{
-                backgroundColor: showAddForm ? '#B8860B' : '#D4AF37',
-                color: showAddForm ? 'white' : '#000000',
+                backgroundColor: showAddForm ? '#45A29E' : '#66FCF1',
+                color: showAddForm ? 'white' : '#0B0C10',
                 padding: '0.6rem 1rem',
                 borderRadius: '4px',
                 fontWeight: 'bold',
@@ -228,7 +228,7 @@ function App() {
                 className="button-hover"
                 onClick={() => setSortOrder('none')}
                 style={{
-                  backgroundColor: '#1A1A1A',
+                  backgroundColor: '#1F2833',
                   color: '#F44336',
                   padding: '0.6rem 1rem',
                   borderRadius: '4px',
@@ -247,8 +247,8 @@ function App() {
         {/* Price Range Filter */}
         {showPriceFilter && (
           <div style={{
-            backgroundColor: '#1A1A1A',
-            border: '1px solid #D4AF37',
+            backgroundColor: '#1F2833',
+            border: '1px solid #66FCF1',
             borderRadius: '8px',
             padding: '0.75rem',
             marginBottom: '0.5rem',
@@ -257,7 +257,7 @@ function App() {
             gap: '0.5rem',
             width: '100%'
           }}>
-            <h3 style={{ color: '#D4AF37', fontSize: '1rem', fontWeight: 'bold' }}>
+            <h3 style={{ color: '#66FCF1', fontSize: '1rem', fontWeight: 'bold' }}>
               Price Range Filter
             </h3>
             
@@ -265,7 +265,7 @@ function App() {
               <div style={{ flex: '1' }}>
                 <label style={{ 
                   display: 'block', 
-                  color: '#D4AF37', 
+                  color: '#66FCF1', 
                   marginBottom: '0.25rem',
                   fontSize: '0.9rem'
                 }}>
@@ -280,8 +280,8 @@ function App() {
                   style={{
                     width: '100%',
                     padding: '0.5rem',
-                    backgroundColor: '#232121',
-                    border: '1px solid #D4AF37',
+                    backgroundColor: '#0B0C10',
+                    border: '1px solid #66FCF1',
                     borderRadius: '4px',
                     color: 'white'
                   }}
@@ -291,7 +291,7 @@ function App() {
               <div style={{ flex: '1' }}>
                 <label style={{ 
                   display: 'block', 
-                  color: '#D4AF37', 
+                  color: '#66FCF1', 
                   marginBottom: '0.25rem',
                   fontSize: '0.9rem'
                 }}>
@@ -306,8 +306,8 @@ function App() {
                   style={{
                     width: '100%',
                     padding: '0.5rem',
-                    backgroundColor: '#232121',
-                    border: '1px solid #D4AF37',
+                    backgroundColor: '#0B0C10',
+                    border: '1px solid #66FCF1',
                     borderRadius: '4px',
                     color: 'white'
                   }}
@@ -336,7 +336,7 @@ function App() {
             
             {/* Price Range Summary */}
             {(minPrice !== '' || maxPrice !== '') && (
-              <div style={{ color: '#F0E68C', fontSize: '0.9rem' }}>
+              <div style={{ color: '#C5C6C7', fontSize: '0.9rem' }}>
                 Currently filtering: 
                 {minPrice !== '' && maxPrice !== '' 
                   ? ` ₹${minPrice} - ₹${maxPrice}`
@@ -344,7 +344,7 @@ function App() {
                     ? ` ₹${minPrice} and above`
                     : ` Up to ₹${maxPrice}`
                 }
-                <span style={{ color: '#B8860B' }}>
+                <span style={{ color: '#45A29E' }}>
                   {" "}({sortedSweets.length} {sortedSweets.length === 1 ? 'sweet' : 'sweets'} match)
                 </span>
               </div>
@@ -381,10 +381,10 @@ function App() {
               gridColumn: '1 / -1',
               textAlign: 'center',
               padding: '1.5rem',
-              color: '#D4AF37',
-              backgroundColor: '#1A1A1A',
+              color: '#66FCF1',
+              backgroundColor: '#1F2833',
               borderRadius: '8px',
-              border: '1px solid #D4AF37'
+              border: '1px solid #66FCF1'
             }}>
               No sweets found. Please add some sweets or try a different search term.
             </div>

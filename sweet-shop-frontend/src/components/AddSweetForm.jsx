@@ -73,15 +73,15 @@ function AddSweetForm({ onSweetAdded }) {
 
   return (
     <div style={{
-      backgroundColor: '#1A1A1A',
-      border: '1px solid #D4AF37',
+      backgroundColor: '#1F2833',
+      border: '1px solid #66FCF1',
       borderRadius: '6px',
       padding: '0.75rem',
       marginBottom: '0.75rem',
       width: '100%'
     }}>
       <h2 style={{ 
-        color: '#D4AF37', 
+        color: '#66FCF1', 
         fontSize: '1rem', 
         fontWeight: 'bold',
         marginBottom: '0.5rem'
@@ -91,7 +91,7 @@ function AddSweetForm({ onSweetAdded }) {
       
       {error && (
         <div style={{
-          backgroundColor: 'rgba(220, 38, 38, 0.2)',
+          backgroundColor: 'rgba(220, 38, 38, 0.15)',
           color: '#FCA5A5',
           padding: '0.75rem',
           borderRadius: '4px',
@@ -104,12 +104,12 @@ function AddSweetForm({ onSweetAdded }) {
       
       {success && (
         <div style={{
-          backgroundColor: 'rgba(16, 185, 129, 0.2)',
-          color: '#6EE7B7',
+          backgroundColor: 'rgba(102, 252, 241, 0.15)',
+          color: '#66FCF1',
           padding: '0.75rem',
           borderRadius: '4px',
           marginBottom: '1rem',
-          border: '1px solid #10B981'
+          border: '1px solid #66FCF1'
         }}>
           {success}
         </div>
@@ -119,7 +119,7 @@ function AddSweetForm({ onSweetAdded }) {
         <div>
           <label htmlFor="id" style={{ 
             display: 'block', 
-            color: '#D4AF37', 
+            color: '#66FCF1', 
             marginBottom: '0.25rem',
             fontSize: '0.9rem'
           }}>
@@ -134,8 +134,8 @@ function AddSweetForm({ onSweetAdded }) {
             style={{
               width: '100%',
               padding: '0.5rem',
-              backgroundColor: '#232121',
-              border: '1px solid #D4AF37',
+              backgroundColor: '#0B0C10',
+              border: '1px solid #66FCF1',
               borderRadius: '4px',
               color: 'white'
             }}
@@ -146,7 +146,7 @@ function AddSweetForm({ onSweetAdded }) {
         <div>
           <label htmlFor="name" style={{ 
             display: 'block', 
-            color: '#D4AF37', 
+            color: '#66FCF1', 
             marginBottom: '0.25rem',
             fontSize: '0.9rem'
           }}>
@@ -161,8 +161,8 @@ function AddSweetForm({ onSweetAdded }) {
             style={{
               width: '100%',
               padding: '0.5rem',
-              backgroundColor: '#232121',
-              border: '1px solid #D4AF37',
+              backgroundColor: '#0B0C10',
+              border: '1px solid #66FCF1',
               borderRadius: '4px',
               color: 'white'
             }}
@@ -173,7 +173,7 @@ function AddSweetForm({ onSweetAdded }) {
         <div>
           <label htmlFor="category" style={{ 
             display: 'block', 
-            color: '#D4AF37', 
+            color: '#66FCF1', 
             marginBottom: '0.25rem',
             fontSize: '0.9rem'
           }}>
@@ -188,8 +188,8 @@ function AddSweetForm({ onSweetAdded }) {
             style={{
               width: '100%',
               padding: '0.5rem',
-              backgroundColor: '#232121',
-              border: '1px solid #D4AF37',
+              backgroundColor: '#0B0C10',
+              border: '1px solid #66FCF1',
               borderRadius: '4px',
               color: 'white'
             }}
@@ -200,7 +200,7 @@ function AddSweetForm({ onSweetAdded }) {
         <div>
           <label htmlFor="price" style={{ 
             display: 'block', 
-            color: '#D4AF37', 
+            color: '#66FCF1', 
             marginBottom: '0.25rem',
             fontSize: '0.9rem'
           }}>
@@ -215,8 +215,8 @@ function AddSweetForm({ onSweetAdded }) {
             style={{
               width: '100%',
               padding: '0.5rem',
-              backgroundColor: '#232121',
-              border: '1px solid #D4AF37',
+              backgroundColor: '#0B0C10',
+              border: '1px solid #66FCF1',
               borderRadius: '4px',
               color: 'white'
             }}
@@ -227,7 +227,7 @@ function AddSweetForm({ onSweetAdded }) {
         <div>
           <label htmlFor="quantity" style={{ 
             display: 'block', 
-            color: '#D4AF37', 
+            color: '#66FCF1', 
             marginBottom: '0.25rem',
             fontSize: '0.9rem'
           }}>
@@ -242,8 +242,8 @@ function AddSweetForm({ onSweetAdded }) {
             style={{
               width: '100%',
               padding: '0.5rem',
-              backgroundColor: '#232121',
-              border: '1px solid #D4AF37',
+              backgroundColor: '#0B0C10',
+              border: '1px solid #66FCF1',
               borderRadius: '4px',
               color: 'white'
             }}
@@ -256,8 +256,8 @@ function AddSweetForm({ onSweetAdded }) {
           style={{
             width: '50%',
             padding: '0.4rem',
-            backgroundColor: '#D4AF37',
-            color: 'black',
+            backgroundColor: '#66FCF1',
+            color: '#0B0C10',
             fontWeight: 'bold',
             borderRadius: '3px',
             marginTop: '0.25rem',

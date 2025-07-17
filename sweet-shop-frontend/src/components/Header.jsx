@@ -4,9 +4,9 @@
 function Header() {
   return (
     <header style={{
-      backgroundColor: '#000000',
+      backgroundColor: '#0B0C10',
       padding: '0.75rem 0',
-      borderBottom: '1px solid #D4AF37',
+      borderBottom: '1px solid #66FCF1',
       boxShadow: '0 2px 5px rgba(0,0,0,0.2)'
     }}>
       <div style={{ 
@@ -18,14 +18,14 @@ function Header() {
         <h1 style={{ 
           fontSize: '1.8rem', 
           fontWeight: 'bold',
-          color: '#D4AF37',
+          color: '#66FCF1',
           margin: '-0.5rem',
           display: 'inline-block'
         }}>
           🛒 Sweet Shop Management 
         </h1>
         <p style={{ 
-          color: '#F0E68C', 
+          color: '#C5C6C7', 
           fontWeight: 'bold',
           marginTop: '0.01rem',
           fontSize: '1rem',
