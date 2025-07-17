@@ -74,21 +74,23 @@ function App() {
   });
 
   return (
-    <div style={{ backgroundColor: '#232121d0', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: '#000000', height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       <Header />
       
-      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem' }}>
+      <main style={{ width: '100%', margin: '0 auto', padding: '1rem', flex: 1, overflowY: 'auto' }}>
         <div style={{ 
           display: 'flex', 
           justifyContent: 'space-between', 
           alignItems: 'center',
-          marginBottom: '2rem'
+          marginBottom: '0.75rem',
+          width: '100%',
+          padding: '0 0.5rem'
         }}>
           <div>
             <h1 style={{ color: '#D4AF37', fontSize: '1.8rem' }}>Sweet Inventory</h1>
           </div>
           
-          <div style={{ display: 'flex', gap: '1rem' }}>
+          <div style={{ display: 'flex', gap: '0.75rem', flex: '1', justifyContent: 'flex-end', maxWidth: '70%' }}>
             {/* Search input */}
             <input 
               type="text"
@@ -167,11 +169,12 @@ function App() {
             backgroundColor: '#1A1A1A',
             border: '1px solid #D4AF37',
             borderRadius: '8px',
-            padding: '1rem',
-            marginBottom: '1.5rem',
+            padding: '0.75rem',
+            marginBottom: '0.5rem',
             display: 'flex',
             flexDirection: 'column',
-            gap: '0.75rem'
+            gap: '0.5rem',
+            width: '100%'
           }}>
             <h3 style={{ color: '#D4AF37', fontSize: '1rem', fontWeight: 'bold' }}>
               Price Range Filter
@@ -276,9 +279,12 @@ function App() {
         {/* Sweet Cards Grid */}
         <div style={{ 
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-          gap: '1.5rem',
-          marginTop: '1.5rem'
+          gridTemplateColumns: 'repeat(5, 1fr)',
+          gap: '1rem',
+          marginTop: '0.5rem',
+          maxHeight: 'calc(100vh - 180px)',
+          overflowY: 'auto',
+          padding: '0 0.5rem'
         }}>
           {filteredSweets.length > 0 ? (
             filteredSweets.map(sweet => (
@@ -294,7 +300,7 @@ function App() {
             <div style={{ 
               gridColumn: '1 / -1',
               textAlign: 'center',
-              padding: '3rem',
+              padding: '1.5rem',
               color: '#D4AF37',
               backgroundColor: '#1A1A1A',
               borderRadius: '8px',
@@ -305,17 +311,6 @@ function App() {
           )}
         </div>
       </main>
-      
-      <footer style={{ 
-        
-        backgroundColor: '#000000',
-        padding: '1.5rem',
-        textAlign: 'center',
-        color: '#D4AF37',
-        marginTop: '2rem'
-      }}>
-        <p>© {new Date().getFullYear()} Sweet Shop Management System</p>
-      </footer>
     </div>
   );
 }

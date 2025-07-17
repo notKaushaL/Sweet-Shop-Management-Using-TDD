@@ -141,7 +141,17 @@ class SweetService {
       new Sweet(1002, "Gajar Halwa", "Vegetable-Based", 30, 15),
       new Sweet(1003, "Gulab Jamun", "Milk-Based", 10, 50),
       new Sweet(1004, "Jalebi", "Flour-Based", 15, 40),
-      new Sweet(1005, "Rasgulla", "Milk-Based", 12, 30)
+      new Sweet(1005, "Rasgulla", "Milk-Based", 12, 30),
+      new Sweet(1006, "Barfi", "Milk-Based", 18, 25),
+      new Sweet(1007, "Laddu", "Flour-Based", 8, 35),
+      new Sweet(1008, "Mysore Pak", "Ghee-Based", 22, 18),
+      new Sweet(1009, "Soan Papdi", "Flour-Based", 25, 40),
+      new Sweet(1010, "Peda", "Milk-Based", 14, 22),
+      new Sweet(1011, "Chikki", "Nut-Based", 16, 45),
+      new Sweet(1012, "Kulfi", "Frozen", 28, 15),
+      new Sweet(1013, "Rasmalai", "Milk-Based", 35, 20),
+      new Sweet(1014, "Balushahi", "Ghee-Based", 20, 25),
+      new Sweet(1015, "Malpua", "Flour-Based", 18, 30)
     ];
   }
 }

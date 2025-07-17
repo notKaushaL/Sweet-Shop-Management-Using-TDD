@@ -75,15 +75,16 @@ function AddSweetForm({ onSweetAdded }) {
     <div style={{
       backgroundColor: '#1A1A1A',
       border: '1px solid #D4AF37',
-      borderRadius: '8px',
-      padding: '1.5rem',
-      marginBottom: '2rem'
+      borderRadius: '6px',
+      padding: '0.75rem',
+      marginBottom: '0.75rem',
+      width: '100%'
     }}>
       <h2 style={{ 
         color: '#D4AF37', 
-        fontSize: '1.25rem', 
+        fontSize: '1rem', 
         fontWeight: 'bold',
-        marginBottom: '1rem'
+        marginBottom: '0.5rem'
       }}>
         Add New Sweet
       </h2>
@@ -114,7 +115,7 @@ function AddSweetForm({ onSweetAdded }) {
         </div>
       )}
       
-      <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1rem' }}>
+      <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '0.5rem', width: '100%', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))' }}>
         <div>
           <label htmlFor="id" style={{ 
             display: 'block', 
@@ -253,15 +254,18 @@ function AddSweetForm({ onSweetAdded }) {
         <button
           type="submit"
           style={{
-            width: '100%',
-            padding: '0.75rem',
+            width: '50%',
+            padding: '0.4rem',
             backgroundColor: '#D4AF37',
             color: 'black',
             fontWeight: 'bold',
-            borderRadius: '4px',
-            marginTop: '0.5rem',
+            borderRadius: '3px',
+            marginTop: '0.25rem',
+            fontSize: '0.85rem',
             cursor: 'pointer',
-            border: 'none'
+            border: 'none',
+            gridColumn: '1 / -1',
+            justifySelf: 'center'
           }}
           data-testid="add-sweet-button"
         >

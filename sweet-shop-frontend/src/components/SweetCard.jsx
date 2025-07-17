@@ -23,36 +23,39 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
       backgroundColor: '#1A1A1A',
       border: '1px solid #D4AF37',
       borderRadius: '8px',
-      padding: '1.5rem',
+      padding: '1rem',
       display: 'flex',
       flexDirection: 'column',
-      height: '100%'
+      height: '100%',
+      width: '100%',
+      minWidth: '100%'
     }}>
-      <div style={{ marginBottom: '1rem' }}>
+      <div style={{ marginBottom: '0.75rem' }}>
         <h3 style={{ 
           color: '#D4AF37', 
-          fontSize: '1.25rem', 
+          fontSize: '1.2rem', 
           fontWeight: 'bold',
           marginBottom: '0.5rem' 
         }}>
           {sweet.name}
         </h3>
-        <div style={{ color: '#F0E68C', marginBottom: '0.25rem' }}>
+        <div style={{ color: '#F0E68C', marginBottom: '0.5rem', fontSize: '0.9rem' }}>
           <span style={{ fontWeight: 'bold' }}>ID:</span> {sweet.id}
         </div>
         <div style={{ 
           color: '#F0E68C', 
-          marginBottom: '0.25rem',
+          marginBottom: '0.5rem',
           display: 'flex',
-          alignItems: 'center'
+          alignItems: 'center',
+          fontSize: '0.9rem'
         }}>
           <span style={{ fontWeight: 'bold', marginRight: '0.25rem' }}>Category:</span> 
           <span style={{
             backgroundColor: '#D4AF37',
             color: 'black',
-            padding: '0.15rem 0.5rem',
+            padding: '0.25rem 0.5rem',
             borderRadius: '4px',
-            fontSize: '0.8rem',
+            fontSize: '0.9rem',
             fontWeight: 'bold'
           }}>
             {sweet.category}
@@ -60,18 +63,19 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
         </div>
         <div style={{ 
           color: '#F0E68C', 
-          marginBottom: '0.25rem',
+          marginBottom: '0.5rem',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          fontSize: '0.9rem'
         }}>
           <span style={{ fontWeight: 'bold' }}>Price:</span>
           <span style={{
             backgroundColor: '#000000',
             color: '#D4AF37',
-            padding: '0.15rem 0.5rem',
+            padding: '0.25rem 0.6rem',
             borderRadius: '4px',
-            fontSize: '1rem',
+            fontSize: '1.1rem',
             fontWeight: 'bold',
             border: '1px solid #D4AF37'
           }}>
@@ -81,14 +85,15 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
         <div style={{ 
           color: sweet.quantity > 10 ? '#4CAF50' : sweet.quantity > 0 ? '#FFC107' : '#F44336',
           marginBottom: '0.5rem',
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          fontSize: '0.95rem'
         }}>
           <span style={{ color: '#F0E68C' }}>Stock:</span> {sweet.quantity} pcs
         </div>
       </div>
       
       <div style={{ 
-        marginTop: 'auto', 
+        marginTop: '0.75rem', 
         display: 'flex',
         justifyContent: 'space-between',
         gap: '0.5rem'
@@ -103,6 +108,7 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
             borderRadius: '4px',
             fontWeight: 'bold',
             cursor: 'pointer',
+            fontSize: '0.85rem',
             flex: '1'
           }}
           disabled={sweet.quantity <= 0}
@@ -119,6 +125,7 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
             borderRadius: '4px',
             fontWeight: 'bold',
             cursor: 'pointer',
+            fontSize: '0.85rem',
             flex: '1'
           }}
         >
@@ -134,6 +141,7 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
             borderRadius: '4px',
             fontWeight: 'bold',
             cursor: 'pointer',
+            fontSize: '0.85rem',
             flex: '1'
           }}
         >
