@@ -297,9 +297,8 @@ function AddSweetForm({ onSweetAdded }) {
             value={formData.quantity}
             onChange={handleChange}
             style={{
-              width: '30%',
-              padding: '0.8rem',
               width: '60%',
+              padding: '0.8rem',
               backgroundColor: '#0B0C10',
               border: '1px solid #66FCF1',
               borderRadius: '12px',
