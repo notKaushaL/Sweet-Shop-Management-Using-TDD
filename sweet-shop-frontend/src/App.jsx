@@ -9,6 +9,7 @@ function App() {
   const [sweets, setSweets] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [showAddForm, setShowAddForm] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   // Load sweets when component mounts
   useEffect(() => {
@@ -51,11 +52,19 @@ function App() {
     }
   };
 
-  // Filter sweets based on search term
-  const filteredSweets = sweets.filter(sweet => 
-    sweet.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    sweet.category.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Filter sweets based on search term and category
+  const filteredSweets = sweets.filter(sweet => {
+    // Filter by search term
+    const matchesSearch = 
+      sweet.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      sweet.category.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    // Filter by category if not showing all
+    const matchesCategory = selectedCategory === 'all' || 
+      sweet.category.toLowerCase() === selectedCategory.toLowerCase();
+    
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <div style={{ backgroundColor: '#232121d0', minHeight: '100vh' }}>
@@ -68,7 +77,12 @@ function App() {
           alignItems: 'center',
           marginBottom: '2rem'
         }}>
-          <h1 style={{ color: '#D4AF37', fontSize: '1.8rem' }}>Sweet Inventory</h1>
+          <div>
+            <h1 style={{ color: '#D4AF37', fontSize: '1.8rem', marginBottom: '0.25rem' }}>Sweet Inventory</h1>
+            <p style={{ color: '#B8860B', fontSize: '0.9rem' }}>
+              {filteredSweets.length} {filteredSweets.length === 1 ? 'sweet' : 'sweets'} {selectedCategory !== 'all' ? `in ${selectedCategory}` : 'total'}
+            </p>
+          </div>
           
           <div style={{ display: 'flex', gap: '1rem' }}>
             {/* Search input */}
@@ -86,6 +100,28 @@ function App() {
                 outline: 'none'
               }}
             />
+
+            {/* Category filter */}
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              style={{
+                padding: '0.5rem 1rem',
+                backgroundColor: '#1A1A1A',
+                border: '1px solid #D4AF37',
+                borderRadius: '4px',
+                color: '#D4AF37',
+                outline: 'none'
+              }}
+            >
+              <option value="all">All Categories</option>
+              {/* Get unique categories */}
+              {[...new Set(sweets.map(sweet => sweet.category))].map(category => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
             
             {/* Add New Sweet button */}
             <button
