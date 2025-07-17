@@ -4,6 +4,7 @@ import Header from './components/Header';
 import SweetCard from './components/SweetCard';
 import AddSweetForm from './components/AddSweetForm';
 import sweetService from './services/SweetService';
+import './hover-effects.css';
 
 function App() {
   const [sweets, setSweets] = useState([]);
@@ -74,10 +75,10 @@ function App() {
   });
 
   return (
-    <div style={{ backgroundColor: '#000000', height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ backgroundColor: '#000000', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Header />
       
-      <main style={{ width: '100%', margin: '0 auto', padding: '1rem', flex: 1, overflowY: 'auto' }}>
+      <main style={{ width: '100%', margin: '0 auto', padding: '1.5rem', flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
         <div style={{ 
           display: 'flex', 
           justifyContent: 'space-between', 
@@ -93,6 +94,7 @@ function App() {
           <div style={{ display: 'flex', gap: '0.75rem', flex: '1', justifyContent: 'flex-end', maxWidth: '70%' }}>
             {/* Search input */}
             <input 
+              className="input-hover"
               type="text"
               placeholder="Search sweets..."
               value={searchTerm}
@@ -109,6 +111,7 @@ function App() {
 
             {/* Category filter */}
             <select
+              className="input-hover"
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
               style={{
@@ -131,6 +134,7 @@ function App() {
 
             {/* Price filter button */}
             <button
+              className="button-hover"
               onClick={() => setShowPriceFilter(!showPriceFilter)}
               style={{
                 backgroundColor: showPriceFilter ? '#B8860B' : '#1A1A1A',
@@ -147,6 +151,7 @@ function App() {
             
             {/* Add New Sweet button */}
             <button
+              className="button-hover"
               onClick={() => setShowAddForm(!showAddForm)}
               style={{
                 backgroundColor: '#D4AF37',
@@ -279,12 +284,11 @@ function App() {
         {/* Sweet Cards Grid */}
         <div style={{ 
           display: 'grid',
-          gridTemplateColumns: 'repeat(5, 1fr)',
+          gridTemplateColumns: 'repeat(4, 1fr)',
           gap: '1rem',
-          marginTop: '0.5rem',
-          maxHeight: 'calc(100vh - 180px)',
-          overflowY: 'auto',
-          padding: '0 0.5rem'
+          marginTop: '1rem',
+          padding: '0.75rem',
+          flex: '1'
         }}>
           {filteredSweets.length > 0 ? (
             filteredSweets.map(sweet => (

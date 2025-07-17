@@ -19,32 +19,35 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
   };
 
   return (
-    <div style={{
-      backgroundColor: '#1A1A1A',
-      border: '1px solid #D4AF37',
-      borderRadius: '8px',
-      padding: '1rem',
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100%',
-      width: '100%',
-      minWidth: '100%'
-    }}>
-      <div style={{ marginBottom: '0.75rem' }}>
+    <div 
+      className="glass-hover"
+      style={{
+        backgroundColor: '#1A1A1A',
+        border: '1px solid #D4AF37',
+        borderRadius: '8px',
+        padding: '0.75rem',
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+        minWidth: '100%',
+        height: '100%',
+        justifyContent: 'space-between'
+      }}>
+      <div style={{ marginBottom: '0.5rem' }}>
         <h3 style={{ 
           color: '#D4AF37', 
-          fontSize: '1.2rem', 
+          fontSize: '1rem', 
           fontWeight: 'bold',
-          marginBottom: '0.5rem' 
+          marginBottom: '0.4rem' 
         }}>
           {sweet.name}
         </h3>
-        <div style={{ color: '#F0E68C', marginBottom: '0.5rem', fontSize: '0.9rem' }}>
+        <div style={{ color: '#F0E68C', marginBottom: '0.5rem', fontSize: '0.85rem' }}>
           <span style={{ fontWeight: 'bold' }}>ID:</span> {sweet.id}
         </div>
         <div style={{ 
           color: '#F0E68C', 
-          marginBottom: '0.5rem',
+          marginBottom: '0.75rem',
           display: 'flex',
           alignItems: 'center',
           fontSize: '0.9rem'
@@ -53,7 +56,7 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
           <span style={{
             backgroundColor: '#D4AF37',
             color: 'black',
-            padding: '0.25rem 0.5rem',
+            padding: '0.3rem 0.6rem',
             borderRadius: '4px',
             fontSize: '0.9rem',
             fontWeight: 'bold'
@@ -93,18 +96,19 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
       </div>
       
       <div style={{ 
-        marginTop: '0.75rem', 
+        marginTop: '0.9rem', 
         display: 'flex',
         justifyContent: 'space-between',
-        gap: '0.5rem'
+        gap: '0.75rem'
       }}>
         <button
+          className="button-hover"
           onClick={handlePurchase}
           style={{
             backgroundColor: '#D4AF37',
             color: '#000000',
             border: 'none',
-            padding: '0.5rem',
+            padding: '0.6rem',
             borderRadius: '4px',
             fontWeight: 'bold',
             cursor: 'pointer',
@@ -116,12 +120,13 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
           Buy
         </button>
         <button
+          className="button-hover"
           onClick={handleRestock}
           style={{
             backgroundColor: '#4CAF50',
             color: 'white',
             border: 'none',
-            padding: '0.5rem',
+            padding: '0.6rem',
             borderRadius: '4px',
             fontWeight: 'bold',
             cursor: 'pointer',
@@ -132,12 +137,13 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
           Restock
         </button>
         <button
+          className="button-hover"
           onClick={() => onDelete(sweet.id)}
           style={{
             backgroundColor: '#F44336',
             color: 'white',
             border: 'none',
-            padding: '0.5rem',
+            padding: '0.6rem',
             borderRadius: '4px',
             fontWeight: 'bold',
             cursor: 'pointer',

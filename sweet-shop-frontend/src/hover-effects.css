@@ -1,0 +1,50 @@
+/* Glassmorphic hover effect for sweet cards and UI elements */
+.glass-hover {
+  transition: all 300ms ease !important;
+}
+
+.glass-hover:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(8px) !important;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.5) !important;
+}
+
+/* Button hover effects */
+.button-hover {
+  transition: all 300ms ease !important;
+  position: relative !important;
+}
+
+.button-hover:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* Underline effect for buttons */
+.button-hover:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.button-hover:hover:after {
+  visibility: visible;
+  width: 100%;
+}
+
+/* Input/select hover effects */
+.input-hover {
+  transition: all 300ms ease !important;
+}
+
+.input-hover:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(8px) !important;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.5) !important;
+}
