@@ -72,24 +72,56 @@ function AddSweetForm({ onSweetAdded }) {
   };
 
   return (
-    <div className="p-4 bg-gray-900 rounded-lg border border-gold-500">
-      <h2 className="text-xl font-bold mb-4 text-gold-500">Add New Sweet</h2>
+    <div style={{
+      backgroundColor: '#1A1A1A',
+      border: '1px solid #D4AF37',
+      borderRadius: '8px',
+      padding: '1.5rem',
+      marginBottom: '2rem'
+    }}>
+      <h2 style={{ 
+        color: '#D4AF37', 
+        fontSize: '1.25rem', 
+        fontWeight: 'bold',
+        marginBottom: '1rem'
+      }}>
+        Add New Sweet
+      </h2>
       
       {error && (
-        <div className="bg-red-900 text-white p-2 rounded mb-4" role="alert">
+        <div style={{
+          backgroundColor: 'rgba(220, 38, 38, 0.2)',
+          color: '#FCA5A5',
+          padding: '0.75rem',
+          borderRadius: '4px',
+          marginBottom: '1rem',
+          border: '1px solid #EF4444'
+        }}>
           {error}
         </div>
       )}
       
       {success && (
-        <div className="bg-green-900 text-white p-2 rounded mb-4" role="alert">
+        <div style={{
+          backgroundColor: 'rgba(16, 185, 129, 0.2)',
+          color: '#6EE7B7',
+          padding: '0.75rem',
+          borderRadius: '4px',
+          marginBottom: '1rem',
+          border: '1px solid #10B981'
+        }}>
           {success}
         </div>
       )}
       
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1rem' }}>
         <div>
-          <label htmlFor="id" className="block text-sm font-medium">
+          <label htmlFor="id" style={{ 
+            display: 'block', 
+            color: '#D4AF37', 
+            marginBottom: '0.25rem',
+            fontSize: '0.9rem'
+          }}>
             Sweet ID
           </label>
           <input
@@ -98,13 +130,25 @@ function AddSweetForm({ onSweetAdded }) {
             name="id"
             value={formData.id}
             onChange={handleChange}
-            className="mt-1 block w-full p-2 bg-gray-800 border border-gold-500 rounded text-white"
+            style={{
+              width: '100%',
+              padding: '0.5rem',
+              backgroundColor: '#232121',
+              border: '1px solid #D4AF37',
+              borderRadius: '4px',
+              color: 'white'
+            }}
             data-testid="sweet-id-input"
           />
         </div>
         
         <div>
-          <label htmlFor="name" className="block text-sm font-medium">
+          <label htmlFor="name" style={{ 
+            display: 'block', 
+            color: '#D4AF37', 
+            marginBottom: '0.25rem',
+            fontSize: '0.9rem'
+          }}>
             Sweet Name
           </label>
           <input
@@ -113,13 +157,25 @@ function AddSweetForm({ onSweetAdded }) {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="mt-1 block w-full p-2 bg-gray-800 border border-gold-500 rounded text-white"
+            style={{
+              width: '100%',
+              padding: '0.5rem',
+              backgroundColor: '#232121',
+              border: '1px solid #D4AF37',
+              borderRadius: '4px',
+              color: 'white'
+            }}
             data-testid="sweet-name-input"
           />
         </div>
         
         <div>
-          <label htmlFor="category" className="block text-sm font-medium">
+          <label htmlFor="category" style={{ 
+            display: 'block', 
+            color: '#D4AF37', 
+            marginBottom: '0.25rem',
+            fontSize: '0.9rem'
+          }}>
             Category
           </label>
           <input
@@ -128,13 +184,25 @@ function AddSweetForm({ onSweetAdded }) {
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className="mt-1 block w-full p-2 bg-gray-800 border border-gold-500 rounded text-white"
+            style={{
+              width: '100%',
+              padding: '0.5rem',
+              backgroundColor: '#232121',
+              border: '1px solid #D4AF37',
+              borderRadius: '4px',
+              color: 'white'
+            }}
             data-testid="sweet-category-input"
           />
         </div>
         
         <div>
-          <label htmlFor="price" className="block text-sm font-medium">
+          <label htmlFor="price" style={{ 
+            display: 'block', 
+            color: '#D4AF37', 
+            marginBottom: '0.25rem',
+            fontSize: '0.9rem'
+          }}>
             Price
           </label>
           <input
@@ -143,13 +211,25 @@ function AddSweetForm({ onSweetAdded }) {
             name="price"
             value={formData.price}
             onChange={handleChange}
-            className="mt-1 block w-full p-2 bg-gray-800 border border-gold-500 rounded text-white"
+            style={{
+              width: '100%',
+              padding: '0.5rem',
+              backgroundColor: '#232121',
+              border: '1px solid #D4AF37',
+              borderRadius: '4px',
+              color: 'white'
+            }}
             data-testid="sweet-price-input"
           />
         </div>
         
         <div>
-          <label htmlFor="quantity" className="block text-sm font-medium">
+          <label htmlFor="quantity" style={{ 
+            display: 'block', 
+            color: '#D4AF37', 
+            marginBottom: '0.25rem',
+            fontSize: '0.9rem'
+          }}>
             Quantity
           </label>
           <input
@@ -158,14 +238,31 @@ function AddSweetForm({ onSweetAdded }) {
             name="quantity"
             value={formData.quantity}
             onChange={handleChange}
-            className="mt-1 block w-full p-2 bg-gray-800 border border-gold-500 rounded text-white"
+            style={{
+              width: '100%',
+              padding: '0.5rem',
+              backgroundColor: '#232121',
+              border: '1px solid #D4AF37',
+              borderRadius: '4px',
+              color: 'white'
+            }}
             data-testid="sweet-quantity-input"
           />
         </div>
         
         <button
           type="submit"
-          className="w-full py-2 px-4 bg-gold-500 hover:bg-gold-600 text-black font-bold rounded transition duration-200"
+          style={{
+            width: '100%',
+            padding: '0.75rem',
+            backgroundColor: '#D4AF37',
+            color: 'black',
+            fontWeight: 'bold',
+            borderRadius: '4px',
+            marginTop: '0.5rem',
+            cursor: 'pointer',
+            border: 'none'
+          }}
           data-testid="add-sweet-button"
         >
           Add Sweet
