@@ -1,41 +1,149 @@
 
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
+import SweetCard from './components/SweetCard';
+import sweetService from './services/SweetService';
 
 function App() {
+  const [sweets, setSweets] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showAddForm, setShowAddForm] = useState(false);
+
+  // Load sweets when component mounts
+  useEffect(() => {
+    // Load sample data when the component mounts
+    sweetService.loadSampleData();
+    setSweets(sweetService.getAllSweets());
+  }, []);
+
+  // Handle purchase
+  const handlePurchase = (id, quantity) => {
+    try {
+      sweetService.purchaseSweet(id, quantity);
+      setSweets([...sweetService.getAllSweets()]);
+      alert('Purchase successful!');
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  // Handle restock
+  const handleRestock = (id, quantity) => {
+    try {
+      sweetService.restockSweet(id, quantity);
+      setSweets([...sweetService.getAllSweets()]);
+      alert('Restock successful!');
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  // Handle delete
+  const handleDelete = (id) => {
+    if (window.confirm('Are you sure you want to delete this sweet?')) {
+      try {
+        sweetService.deleteSweetById(id);
+        setSweets([...sweetService.getAllSweets()]);
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+  };
+
+  // Filter sweets based on search term
+  const filteredSweets = sweets.filter(sweet => 
+    sweet.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    sweet.category.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div style={{ backgroundColor: '#000000', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: '#232121d0', minHeight: '100vh' }}>
       <Header />
       
       <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem' }}>
         <div style={{ 
           display: 'flex', 
-          justifyContent: 'center', 
+          justifyContent: 'space-between', 
           alignItems: 'center',
-          height: '50vh'
+          marginBottom: '2rem'
         }}>
-          <div style={{ 
-            color: '#D4AF37', 
-            textAlign: 'center',
-            padding: '2rem',
-            border: '1px solid #D4AF37',
-            borderRadius: '8px',
-            backgroundColor: 'rgba(26, 26, 26, 0.8)'
-          }}>
-            <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
-              Welcome to Sweet Shop Management
-            </h1>
-            <p style={{ fontSize: '1.2rem' }}>
-              A simple system to manage your sweet inventory
-            </p>
+          <h1 style={{ color: '#D4AF37', fontSize: '1.8rem' }}>Sweet Inventory</h1>
+          
+          <div style={{ display: 'flex', gap: '1rem' }}>
+            {/* Search input */}
+            <input 
+              type="text"
+              placeholder="Search sweets..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              style={{
+                padding: '0.5rem 1rem',
+                backgroundColor: '#1A1A1A',
+                border: '1px solid #D4AF37',
+                borderRadius: '4px',
+                color: 'white',
+                outline: 'none'
+              }}
+            />
+            
+            {/* Add New Sweet button */}
+            <button
+              onClick={() => setShowAddForm(!showAddForm)}
+              style={{
+                backgroundColor: '#D4AF37',
+                color: '#000000',
+                padding: '0.5rem 1rem',
+                borderRadius: '4px',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                border: 'none'
+              }}
+            >
+              {showAddForm ? 'Hide Form' : 'Add New Sweet'}
+            </button>
           </div>
+        </div>
+        
+        {/* Sweet Cards Grid */}
+        <div style={{ 
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+          gap: '1.5rem',
+          marginTop: '1.5rem'
+        }}>
+          {filteredSweets.length > 0 ? (
+            filteredSweets.map(sweet => (
+              <SweetCard 
+                key={sweet.id} 
+                sweet={sweet} 
+                onPurchase={handlePurchase}
+                onRestock={handleRestock}
+                onDelete={handleDelete}
+              />
+            ))
+          ) : (
+            <div style={{ 
+              gridColumn: '1 / -1',
+              textAlign: 'center',
+              padding: '3rem',
+              color: '#D4AF37',
+              backgroundColor: '#1A1A1A',
+              borderRadius: '8px',
+              
+            }}>
+              
+            </div>
+          )}
         </div>
       </main>
       
       <footer style={{ 
-        borderTop: '1px solid #D4AF37', 
+        
+        backgroundColor: '#000000',
         padding: '1.5rem',
         textAlign: 'center',
-        color: '#D4AF37'
+        color: '#D4AF37',
+        marginTop: '2rem'
       }}>
         <p>© {new Date().getFullYear()} Sweet Shop Management System</p>
       </footer>
