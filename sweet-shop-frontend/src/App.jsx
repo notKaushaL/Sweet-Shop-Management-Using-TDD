@@ -85,19 +85,7 @@ function App() {
           marginBottom: '2rem'
         }}>
           <div>
-            <h1 style={{ color: '#D4AF37', fontSize: '1.8rem', marginBottom: '0.25rem' }}>Sweet Inventory</h1>
-            <p style={{ color: '#B8860B', fontSize: '0.9rem' }}>
-              {filteredSweets.length} {filteredSweets.length === 1 ? 'sweet' : 'sweets'} 
-              {selectedCategory !== 'all' ? ` in ${selectedCategory}` : ' total'}
-              {(minPrice !== '' || maxPrice !== '') && 
-                (minPrice !== '' && maxPrice !== '' 
-                  ? `, price range: ₹${minPrice} - ₹${maxPrice}`
-                  : minPrice !== '' 
-                    ? `, price: ₹${minPrice}+`
-                    : `, price: up to ₹${maxPrice}`
-                )
-              }
-            </p>
+            <h1 style={{ color: '#D4AF37', fontSize: '1.8rem' }}>Sweet Inventory</h1>
           </div>
           
           <div style={{ display: 'flex', gap: '1rem' }}>
