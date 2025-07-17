@@ -1,4 +1,4 @@
-# 🍬 Sweet Shop Management System
+<!-- # 🍬 Sweet Shop Management System
 
 A clean and modular backend system to manage sweet inventory using **Test-Driven Development (TDD)** and **SOLID principles**. Users can perform core operations like adding, viewing, deleting, searching, sorting, purchasing, and restocking sweets.
 
@@ -86,4 +86,4 @@ This project uses AI tools like **ChatGPT** to improve code quality, generate bo
 
 ## 📄 License
 
-This project is built for educational and assessment use. © 2025
+This project is built for educational and assessment use. © 2025 -->

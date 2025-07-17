@@ -32,7 +32,7 @@ function Header() {
           fontWeight: 'bold',
           marginTop: '0.01rem',
           fontSize: '1rem',
-          marginLeft: '2.6rem'
+          marginLeft: '2.8rem'
         }}>
           Sweet people have SWEET taste !
         </p>

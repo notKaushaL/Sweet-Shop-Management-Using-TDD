@@ -46,8 +46,13 @@
 }
 
 .input-hover:hover {
-  background-color: rgba(102, 252, 241, 0.05) !important;
-  box-shadow: 0 0 15px rgba(102, 252, 241, 0.2) !important;
+  background-color: rgba(31, 40, 51, 0.9) !important;
+  box-shadow: 0 4px 12px rgba(102, 252, 241, 0.25), inset 0 1px 3px rgba(102, 252, 241, 0.2) !important;
+}
+
+.input-hover:focus {
+  box-shadow: 0 0 0 2px rgba(102, 252, 241, 0.3), 0 4px 12px rgba(102, 252, 241, 0.2) !important;
+  outline: none !important;
 }
 
 /* Dropdown menu styling */

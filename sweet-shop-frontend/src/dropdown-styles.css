@@ -13,20 +13,23 @@ select:-moz-focusring {
 
 /* Override browser-specific styling for dropdowns */
 select option {
-  background-color: #0D1117;
+  background-color: #121824;
   color: #66FCF1;
-  padding: 10px;
+  padding: 12px 15px;
+  margin: 2px 0;
+  border-radius: 8px;
 }
 
 select option:checked {
-  background: #1F2833;
-  color: #66FCF1;
+  background: rgba(102, 252, 241, 0.15);
+  color: white;
 }
 
 select option:hover,
 select option:focus {
-  background: linear-gradient(135deg, #45A29E 0%, #2d6c6a 100%);
+  background: rgba(102, 252, 241, 0.2);
   color: white;
+  box-shadow: 0 0 15px rgba(102, 252, 241, 0.5);
 }
 
 /* For Webkit browsers like Chrome/Safari */
@@ -55,4 +58,30 @@ select::-webkit-scrollbar-thumb {
     background-color: #0D1117;
     color: #66FCF1;
   }
+}
+
+/* Custom styling for category select */
+.category-select option {
+  padding: 12px 15px;
+  margin: 4px 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.category-select option:hover {
+  background: linear-gradient(135deg, rgba(102, 252, 241, 0.2) 0%, rgba(69, 162, 158, 0.3) 100%) !important;
+  color: white !important;
+  box-shadow: 0 0 15px rgba(102, 252, 241, 0.3);
+}
+
+/* Add cyberpunk glow effect on hover */
+.category-select:hover {
+  box-shadow: 0 4px 12px rgba(102, 252, 241, 0.25), inset 0 1px 3px rgba(102, 252, 241, 0.2);
+}
+
+/* Focus styling */
+.category-select:focus {
+  box-shadow: 0 0 0 2px rgba(102, 252, 241, 0.3), 0 4px 12px rgba(102, 252, 241, 0.2);
+  outline: none;
 }

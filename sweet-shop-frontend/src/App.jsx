@@ -4,6 +4,7 @@ import SweetCard from './components/SweetCard';
 import AddSweetForm from './components/AddSweetForm';
 import sweetService from './services/SweetService';
 import './hover-effects.css';
+import './dropdown-styles.css';
 
 function App() {
   const [sweets, setSweets] = useState([]);
@@ -111,27 +112,28 @@ function App() {
             onChange={(e) => setSearchTerm(e.target.value)}
             style={{
               padding: '0.6rem 1.2rem',
-              backgroundColor: '#1F2833',
-              border: '1px solid #66FCF1',
-              borderRadius: '4px',
+              backgroundColor: 'rgba(31, 40, 51, 0.8)',
+              border: 'none',
+              borderRadius: '12px',
               color: 'white',
               outline: 'none',
               flex: '1',
               minWidth: '180px',
-              fontSize: '1rem'
+              fontSize: '1rem',
+              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(102, 252, 241, 0.1)'
             }}
           />
           
           {/* Category filter - wider */}
           <select
-            className="input-hover"
+            className="input-hover category-select"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
             style={{
               padding: '0.6rem 1.2rem',
-              backgroundColor: '#1F2833',
-              border: '1px solid #66FCF1',
-              borderRadius: '4px',
+              backgroundColor: 'rgba(31, 40, 51, 0.8)',
+              border: 'none',
+              borderRadius: '12px',
               color: '#66FCF1',
               outline: 'none',
               flex: '0 0 180px',
@@ -142,7 +144,9 @@ function App() {
               backgroundImage: 'url("data:image/svg+xml;utf8,<svg fill=\'%2366FCF1\' height=\'24\' viewBox=\'0 0 24 24\' width=\'24\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M7 10l5 5 5-5z\'/><path d=\'M0 0h24v24H0z\' fill=\'none\'/></svg>")',
               backgroundRepeat: 'no-repeat',
               backgroundPosition: 'right 0.7rem top 50%',
-              backgroundSize: '1.5em auto'
+              backgroundSize: '1.5em auto',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(102, 252, 241, 0.1)'
             }}
           >
             <option value="all">All Categories</option>
@@ -161,15 +165,18 @@ function App() {
               className="button-hover"
               onClick={() => setSortOrder('asc')}
               style={{
-                backgroundColor: sortOrder === 'asc' ? '#45A29E' : '#1F2833',
+                backgroundColor: sortOrder === 'asc' ? 'rgba(69, 162, 158, 0.9)' : 'rgba(31, 40, 51, 0.8)',
                 color: sortOrder === 'asc' ? 'white' : '#66FCF1',
                 padding: '0.6rem 1rem',
-                borderRadius: '4px',
+                borderRadius: '12px',
                 fontWeight: 'bold',
                 cursor: 'pointer',
-                border: '1px solid #66FCF1',
+                border: 'none',
                 fontSize: '0.95rem',
-                whiteSpace: 'nowrap'
+                whiteSpace: 'nowrap',
+                boxShadow: sortOrder === 'asc' 
+                  ? '0 4px 12px rgba(69, 162, 158, 0.4)' 
+                  : '0 4px 8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(102, 252, 241, 0.1)'
               }}
             >
               ↑ Low to High
@@ -178,15 +185,18 @@ function App() {
               className="button-hover"
               onClick={() => setSortOrder('desc')}
               style={{
-                backgroundColor: sortOrder === 'desc' ? '#45A29E' : '#1F2833',
+                backgroundColor: sortOrder === 'desc' ? 'rgba(69, 162, 158, 0.9)' : 'rgba(31, 40, 51, 0.8)',
                 color: sortOrder === 'desc' ? 'white' : '#66FCF1',
                 padding: '0.6rem 1rem',
-                borderRadius: '4px',
+                borderRadius: '12px',
                 fontWeight: 'bold',
                 cursor: 'pointer',
-                border: '1px solid #66FCF1',
+                border: 'none',
                 fontSize: '0.95rem',
-                whiteSpace: 'nowrap'
+                whiteSpace: 'nowrap',
+                boxShadow: sortOrder === 'desc' 
+                  ? '0 4px 12px rgba(69, 162, 158, 0.4)' 
+                  : '0 4px 8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(102, 252, 241, 0.1)'
               }}
             >
               ↓ High to Low
@@ -199,15 +209,18 @@ function App() {
               className="button-hover"
               onClick={() => setShowPriceFilter(!showPriceFilter)}
               style={{
-                backgroundColor: showPriceFilter ? '#45A29E' : '#1F2833',
+                backgroundColor: showPriceFilter ? 'rgba(69, 162, 158, 0.9)' : 'rgba(31, 40, 51, 0.8)',
                 color: showPriceFilter ? 'white' : '#66FCF1',
                 padding: '0.6rem 1rem',
-                borderRadius: '4px',
+                borderRadius: '12px',
                 fontWeight: 'bold',
                 cursor: 'pointer',
-                border: '1px solid #66FCF1',
+                border: 'none',
                 fontSize: '0.95rem',
-                whiteSpace: 'nowrap'
+                whiteSpace: 'nowrap',
+                boxShadow: showPriceFilter
+                  ? '0 4px 12px rgba(69, 162, 158, 0.4)'
+                  : '0 4px 8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(102, 252, 241, 0.1)'
               }}
             >
               {showPriceFilter ? 'Hide Filter' : 'Price Filter'}
@@ -217,15 +230,18 @@ function App() {
               className="button-hover"
               onClick={() => setShowAddForm(!showAddForm)}
               style={{
-                backgroundColor: showAddForm ? '#45A29E' : '#66FCF1',
+                backgroundColor: showAddForm ? 'rgba(69, 162, 158, 0.9)' : 'rgba(102, 252, 241, 0.9)',
                 color: showAddForm ? 'white' : '#0B0C10',
                 padding: '0.6rem 1rem',
-                borderRadius: '4px',
+                borderRadius: '12px',
                 fontWeight: 'bold',
                 cursor: 'pointer',
                 border: 'none',
                 fontSize: '0.95rem',
-                whiteSpace: 'nowrap'
+                whiteSpace: 'nowrap',
+                boxShadow: showAddForm
+                  ? '0 4px 12px rgba(69, 162, 158, 0.4)'
+                  : '0 4px 12px rgba(102, 252, 241, 0.4)'
               }}
             >
               {showAddForm ? 'Hide Form' : '+ New Sweet'}
@@ -236,14 +252,15 @@ function App() {
                 className="button-hover"
                 onClick={() => setSortOrder('none')}
                 style={{
-                  backgroundColor: '#1F2833',
+                  backgroundColor: 'rgba(31, 40, 51, 0.8)',
                   color: '#F44336',
                   padding: '0.6rem 1rem',
-                  borderRadius: '4px',
+                  borderRadius: '12px',
                   fontWeight: 'bold',
                   cursor: 'pointer',
-                  border: '1px solid #F44336',
-                  fontSize: '0.95rem'
+                  border: 'none',
+                  fontSize: '0.95rem',
+                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(244, 67, 54, 0.1)'
                 }}
               >
                 Clear Sort
@@ -282,6 +299,7 @@ function App() {
                 </label>
                 <input
                   type="number"
+                  className="input-hover"
                   value={minPrice}
                   onChange={(e) => setMinPrice(e.target.value)}
                   placeholder="Min Price"
@@ -289,10 +307,11 @@ function App() {
                   style={{
                     width: '100%',
                     padding: '0.5rem',
-                    backgroundColor: '#0B0C10',
-                    border: '1px solid #66FCF1',
-                    borderRadius: '4px',
-                    color: 'white'
+                    backgroundColor: 'rgba(31, 40, 51, 0.8)',
+                    border: 'none',
+                    borderRadius: '12px',
+                    color: 'white',
+                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(102, 252, 241, 0.1)'
                   }}
                 />
               </div>
@@ -308,6 +327,7 @@ function App() {
                 </label>
                 <input
                   type="number"
+                  className="input-hover"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(e.target.value)}
                   placeholder="Max Price"
@@ -315,10 +335,11 @@ function App() {
                   style={{
                     width: '100%',
                     padding: '0.5rem',
-                    backgroundColor: '#0B0C10',
-                    border: '1px solid #66FCF1',
-                    borderRadius: '4px',
-                    color: 'white'
+                    backgroundColor: 'rgba(31, 40, 51, 0.8)',
+                    border: 'none',
+                    borderRadius: '12px',
+                    color: 'white',
+                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(102, 252, 241, 0.1)'
                   }}
                 />
               </div>
@@ -329,14 +350,15 @@ function App() {
                   setMaxPrice('');
                 }}
                 style={{
-                  backgroundColor: '#F44336',
+                  backgroundColor: 'rgba(244, 67, 54, 0.9)',
                   color: 'white',
                   padding: '0.5rem 1rem',
-                  borderRadius: '4px',
+                  borderRadius: '12px',
                   fontWeight: 'bold',
                   cursor: 'pointer',
                   border: 'none',
-                  marginTop: '1.5rem'
+                  marginTop: '1.5rem',
+                  boxShadow: '0 4px 12px rgba(244, 67, 54, 0.3)'
                 }}
               >
                 Clear
@@ -363,7 +385,13 @@ function App() {
         
         {/* Add Sweet Form */}
         {showAddForm && (
-          <AddSweetForm onSweetAdded={() => setSweets([...sweetService.getAllSweets()])} />
+          <AddSweetForm 
+            onSweetAdded={() => {
+              setSweets([...sweetService.getAllSweets()]);
+              // Add slight delay before closing form to show success message
+              setTimeout(() => setShowAddForm(false), 1500);
+            }} 
+          />
         )}
         
         {/* Sweet Cards Grid */}

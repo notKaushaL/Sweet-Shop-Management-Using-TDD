@@ -60,9 +60,10 @@ function AddSweetForm({ onSweetAdded }) {
         quantity: ''
       });
       
-      setSuccess('Sweet added successfully!');
+      // Set success message and scroll to it
+      setSuccess('Sweet added successfully! Returning to home...');
       
-      // Call the callback to notify parent component
+      // Call the callback to notify parent component (which will close the form)
       if (onSweetAdded) {
         onSweetAdded();
       }
@@ -117,17 +118,26 @@ function AddSweetForm({ onSweetAdded }) {
       
       {success && (
         <div style={{
-          backgroundColor: 'rgba(102, 252, 241, 0.15)',
+          backgroundColor: 'rgba(102, 252, 241, 0.2)',
           color: '#66FCF1',
-          padding: '1rem',
-          borderRadius: '8px',
+          padding: '1.2rem',
+          borderRadius: '12px',
           marginBottom: '1.5rem',
-          border: '1px solid #66FCF1',
-          fontSize: '1rem',
+          border: 'none',
+          fontSize: '1.1rem',
+          fontWeight: 'bold',
           textAlign: 'center',
-          boxShadow: '0 4px 8px rgba(102, 252, 241, 0.2)'
+          boxShadow: '0 6px 16px rgba(102, 252, 241, 0.35)',
+          animation: 'pulse 1.5s infinite'
         }}>
           {success}
+          <style>{`
+            @keyframes pulse {
+              0% { box-shadow: 0 0 0 0 rgba(102, 252, 241, 0.7); }
+              70% { box-shadow: 0 0 0 10px rgba(102, 252, 241, 0); }
+              100% { box-shadow: 0 0 0 0 rgba(102, 252, 241, 0); }
+            }
+          `}</style>
         </div>
       )}
       
