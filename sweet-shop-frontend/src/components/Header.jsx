@@ -21,14 +21,14 @@ function Header() {
           color: '#D4AF37',
           margin: '0'
         }}>
-          ✨ Sweet Shop Management ✨
+          🛒 Sweet Shop Management 
         </h1>
         <p style={{ 
           color: '#F0E68C', 
           marginTop: '0.5rem',
           fontSize: '1.1rem'
         }}>
-          Manage your sweet inventory with ease
+          Sweet people have SWEET taste !
         </p>
       </div>
     </header>
