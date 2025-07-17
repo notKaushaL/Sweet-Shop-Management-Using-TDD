@@ -47,7 +47,7 @@ An inventory management system for a sweet shop, built using **Test-Driven Devel
 
 ### Backend Setup
 ```bash
-git clone https://github.com/your-username/sweet-shop-management.git
+git clone https://github.com/notKaushaL/Sweet-Store.git
 cd sweet-shop-management
 npm install
 npm test
