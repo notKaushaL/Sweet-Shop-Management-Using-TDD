@@ -80,16 +80,16 @@ function App() {
       
       <main style={{ width: '100%', margin: '0 auto', padding: '1.5rem', flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
         <div style={{ 
+
           display: 'flex', 
+          flexDirection: 'column',
           justifyContent: 'space-between', 
           alignItems: 'center',
-          marginBottom: '0.75rem',
+          marginBottom: '0.0125rem',
           width: '100%',
           padding: '0 0.5rem'
         }}>
-          <div>
-            <h1 style={{ color: '#D4AF37', fontSize: '1.8rem' }}>Sweet Inventory</h1>
-          </div>
+          
           
           <div style={{ display: 'flex', gap: '0.75rem', flex: '1', justifyContent: 'flex-end', maxWidth: '70%' }}>
             {/* Search input */}
