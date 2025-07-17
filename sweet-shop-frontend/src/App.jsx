@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import SweetCard from './components/SweetCard';
+import AddSweetForm from './components/AddSweetForm';
 import sweetService from './services/SweetService';
 
 function App() {
@@ -103,6 +104,11 @@ function App() {
             </button>
           </div>
         </div>
+
+        {/* Add Sweet Form */}
+        {showAddForm && (
+          <AddSweetForm onSweetAdded={() => setSweets([...sweetService.getAllSweets()])} />
+        )}
         
         {/* Sweet Cards Grid */}
         <div style={{ 
@@ -129,9 +135,9 @@ function App() {
               color: '#D4AF37',
               backgroundColor: '#1A1A1A',
               borderRadius: '8px',
-              
+              border: '1px solid #D4AF37'
             }}>
-              
+              No sweets found. Please add some sweets or try a different search term.
             </div>
           )}
         </div>
