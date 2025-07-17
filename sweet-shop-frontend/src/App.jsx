@@ -95,11 +95,12 @@ function App() {
           alignItems: 'center',
           marginBottom: '1.25rem',
           width: '100%',
-          padding: '0.5rem 0.75rem',
-          backgroundColor: '#1F2833',
-          borderRadius: '8px',
-          border: '1px solid #66FCF1',
-          gap: '1rem'
+          padding: '0.8rem 1rem',
+          backgroundColor: '#0D1117',
+          borderRadius: '12px',
+          border: 'none',
+          gap: '1rem',
+          boxShadow: '0 4px 12px rgba(102, 252, 241, 0.15)'
         }}>
           {/* Search input - wider */}
           <input 
@@ -134,7 +135,14 @@ function App() {
               color: '#66FCF1',
               outline: 'none',
               flex: '0 0 180px',
-              fontSize: '1rem'
+              fontSize: '1rem',
+              WebkitAppearance: 'none',
+              MozAppearance: 'none',
+              appearance: 'none',
+              backgroundImage: 'url("data:image/svg+xml;utf8,<svg fill=\'%2366FCF1\' height=\'24\' viewBox=\'0 0 24 24\' width=\'24\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M7 10l5 5 5-5z\'/><path d=\'M0 0h24v24H0z\' fill=\'none\'/></svg>")',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'right 0.7rem top 50%',
+              backgroundSize: '1.5em auto'
             }}
           >
             <option value="all">All Categories</option>
@@ -247,15 +255,16 @@ function App() {
         {/* Price Range Filter */}
         {showPriceFilter && (
           <div style={{
-            backgroundColor: '#1F2833',
-            border: '1px solid #66FCF1',
-            borderRadius: '8px',
-            padding: '0.75rem',
-            marginBottom: '0.5rem',
+            backgroundColor: '#0D1117',
+            border: 'none',
+            borderRadius: '12px',
+            padding: '1rem',
+            marginBottom: '1rem',
             display: 'flex',
             flexDirection: 'column',
             gap: '0.5rem',
-            width: '100%'
+            width: '100%',
+            boxShadow: '0 4px 12px rgba(102, 252, 241, 0.15)'
           }}>
             <h3 style={{ color: '#66FCF1', fontSize: '1rem', fontWeight: 'bold' }}>
               Price Range Filter
@@ -380,11 +389,12 @@ function App() {
             <div style={{ 
               gridColumn: '1 / -1',
               textAlign: 'center',
-              padding: '1.5rem',
+              padding: '1.8rem',
               color: '#66FCF1',
-              backgroundColor: '#1F2833',
-              borderRadius: '8px',
-              border: '1px solid #66FCF1'
+              backgroundColor: '#0D1117',
+              borderRadius: '12px',
+              boxShadow: '0 4px 12px rgba(102, 252, 241, 0.15)',
+              border: 'none'
             }}>
               No sweets found. Please add some sweets or try a different search term.
             </div>

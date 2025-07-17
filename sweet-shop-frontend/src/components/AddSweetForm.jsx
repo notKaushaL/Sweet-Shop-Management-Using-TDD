@@ -73,18 +73,20 @@ function AddSweetForm({ onSweetAdded }) {
 
   return (
     <div style={{
-      backgroundColor: '#1F2833',
-      border: '1px solid #66FCF1',
-      borderRadius: '6px',
-      padding: '0.75rem',
-      marginBottom: '0.75rem',
-      width: '100%'
+      backgroundColor: '#0D1117',
+      border: 'none',
+      borderRadius: '12px',
+      padding: '1.8rem',
+      marginBottom: '1.5rem',
+      width: '100%',
+      boxShadow: '0 4px 12px rgba(102, 252, 241, 0.15)'
     }}>
       <h2 style={{ 
         color: '#66FCF1', 
-        fontSize: '1rem', 
+        fontSize: '1.4rem', 
         fontWeight: 'bold',
-        marginBottom: '0.5rem'
+        marginBottom: '1rem',
+        textAlign: 'center'
       }}>
         Add New Sweet
       </h2>
@@ -93,10 +95,13 @@ function AddSweetForm({ onSweetAdded }) {
         <div style={{
           backgroundColor: 'rgba(220, 38, 38, 0.15)',
           color: '#FCA5A5',
-          padding: '0.75rem',
-          borderRadius: '4px',
-          marginBottom: '1rem',
-          border: '1px solid #EF4444'
+          padding: '1rem',
+          borderRadius: '8px',
+          marginBottom: '1.5rem',
+          border: '1px solid #EF4444',
+          fontSize: '1rem',
+          textAlign: 'center',
+          boxShadow: '0 4px 8px rgba(239, 68, 68, 0.2)'
         }}>
           {error}
         </div>
@@ -106,22 +111,36 @@ function AddSweetForm({ onSweetAdded }) {
         <div style={{
           backgroundColor: 'rgba(102, 252, 241, 0.15)',
           color: '#66FCF1',
-          padding: '0.75rem',
-          borderRadius: '4px',
-          marginBottom: '1rem',
-          border: '1px solid #66FCF1'
+          padding: '1rem',
+          borderRadius: '8px',
+          marginBottom: '1.5rem',
+          border: '1px solid #66FCF1',
+          fontSize: '1rem',
+          textAlign: 'center',
+          boxShadow: '0 4px 8px rgba(102, 252, 241, 0.2)'
         }}>
           {success}
         </div>
       )}
       
-      <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '0.5rem', width: '100%', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))' }}>
-        <div>
+      <form onSubmit={handleSubmit} style={{ 
+        display: 'grid', 
+        gridTemplateAreas: `
+          "id name category"
+          "price price quantity"
+          "button button button"
+        `,
+        gap: '1.5rem', 
+        width: '100%', 
+        maxWidth: '1000px',
+        margin: '0 auto'
+      }}>
+        <div style={{ gridArea: 'id' }}>
           <label htmlFor="id" style={{ 
             display: 'block', 
             color: '#66FCF1', 
-            marginBottom: '0.25rem',
-            fontSize: '0.9rem'
+            marginBottom: '0.5rem',
+            fontSize: '1rem'
           }}>
             Sweet ID
           </label>
@@ -129,26 +148,29 @@ function AddSweetForm({ onSweetAdded }) {
             type="number"
             id="id"
             name="id"
+            min="1"
             value={formData.id}
             onChange={handleChange}
             style={{
               width: '100%',
-              padding: '0.5rem',
+              padding: '0.8rem',
               backgroundColor: '#0B0C10',
               border: '1px solid #66FCF1',
-              borderRadius: '4px',
-              color: 'white'
+              borderRadius: '12px',
+              color: 'white',
+              fontSize: '1rem',
+              outline: 'none'
             }}
             data-testid="sweet-id-input"
           />
         </div>
         
-        <div>
+        <div style={{ gridArea: 'name' }}>
           <label htmlFor="name" style={{ 
             display: 'block', 
             color: '#66FCF1', 
-            marginBottom: '0.25rem',
-            fontSize: '0.9rem'
+            marginBottom: '0.5rem',
+            fontSize: '1rem'
           }}>
             Sweet Name
           </label>
@@ -160,22 +182,24 @@ function AddSweetForm({ onSweetAdded }) {
             onChange={handleChange}
             style={{
               width: '100%',
-              padding: '0.5rem',
+              padding: '0.8rem',
               backgroundColor: '#0B0C10',
               border: '1px solid #66FCF1',
-              borderRadius: '4px',
-              color: 'white'
+              borderRadius: '12px',
+              color: 'white',
+              fontSize: '1rem',
+              outline: 'none'
             }}
             data-testid="sweet-name-input"
           />
         </div>
         
-        <div>
+        <div style={{ gridArea: 'category' }}>
           <label htmlFor="category" style={{ 
             display: 'block', 
             color: '#66FCF1', 
-            marginBottom: '0.25rem',
-            fontSize: '0.9rem'
+            marginBottom: '0.5rem',
+            fontSize: '1rem'
           }}>
             Category
           </label>
@@ -187,65 +211,77 @@ function AddSweetForm({ onSweetAdded }) {
             onChange={handleChange}
             style={{
               width: '100%',
-              padding: '0.5rem',
+              padding: '0.8rem',
               backgroundColor: '#0B0C10',
               border: '1px solid #66FCF1',
-              borderRadius: '4px',
-              color: 'white'
+              borderRadius: '12px',
+              color: 'white',
+              fontSize: '1rem',
+              outline: 'none'
             }}
             data-testid="sweet-category-input"
           />
         </div>
         
-        <div>
+        <div style={{ gridArea: 'price', justifySelf: 'center', width: '50%' }}>
           <label htmlFor="price" style={{ 
             display: 'block', 
             color: '#66FCF1', 
-            marginBottom: '0.25rem',
-            fontSize: '0.9rem'
+            marginBottom: '0.5rem',
+            fontSize: '1rem',
+            textAlign: 'center'
           }}>
-            Price
+            Price (₹)
           </label>
           <input
             type="number"
             id="price"
             name="price"
+            min="1"
             value={formData.price}
             onChange={handleChange}
             style={{
               width: '100%',
-              padding: '0.5rem',
+              padding: '0.8rem',
               backgroundColor: '#0B0C10',
               border: '1px solid #66FCF1',
-              borderRadius: '4px',
-              color: 'white'
+              borderRadius: '12px',
+              color: 'white',
+              fontSize: '1rem',
+              outline: 'none',
+              textAlign: 'center'
             }}
             data-testid="sweet-price-input"
           />
         </div>
         
-        <div>
+        <div style={{ gridArea: 'quantity', justifySelf: 'center', width: '50%' }}>
           <label htmlFor="quantity" style={{ 
             display: 'block', 
             color: '#66FCF1', 
-            marginBottom: '0.25rem',
-            fontSize: '0.9rem'
+            marginBottom: '0.5rem',
+            fontSize: '1rem',
+            textAlign: 'center'
           }}>
-            Quantity
+            Quantity (pcs)
           </label>
           <input
             type="number"
             id="quantity"
             name="quantity"
+            min="1"
             value={formData.quantity}
             onChange={handleChange}
             style={{
               width: '100%',
-              padding: '0.5rem',
+              padding: '0.8rem',
               backgroundColor: '#0B0C10',
               border: '1px solid #66FCF1',
-              borderRadius: '4px',
-              color: 'white'
+              borderRadius: '12px',
+              color: 'white',
+              fontSize: '1rem',
+              outline: 'none',
+              textAlign: 'center'
             }}
             data-testid="sweet-quantity-input"
           />
@@ -254,18 +290,30 @@ function AddSweetForm({ onSweetAdded }) {
         <button
           type="submit"
           style={{
-            width: '50%',
-            padding: '0.4rem',
-            backgroundColor: '#66FCF1',
+            width: '60%',
+            padding: '1rem',
+            background: 'linear-gradient(135deg, #66FCF1 0%, #45A29E 100%)',
             color: '#0B0C10',
             fontWeight: 'bold',
-            borderRadius: '3px',
-            marginTop: '0.25rem',
-            fontSize: '0.85rem',
+            borderRadius: '12px',
+            marginTop: '1.5rem',
+            fontSize: '1.1rem',
             cursor: 'pointer',
             border: 'none',
             gridColumn: '1 / -1',
-            justifySelf: 'center'
+            justifySelf: 'center',
+            boxShadow: '0 4px 16px rgba(102, 252, 241, 0.3)',
+            transition: 'all 0.3s ease',
+            textTransform: 'uppercase',
+            letterSpacing: '1px'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.transform = 'translateY(-2px)';
+            e.currentTarget.style.boxShadow = '0 6px 20px rgba(102, 252, 241, 0.5)';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 4px 16px rgba(102, 252, 241, 0.3)';
           }}
           data-testid="add-sweet-button"
         >

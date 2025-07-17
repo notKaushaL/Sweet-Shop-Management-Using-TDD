@@ -16,6 +16,27 @@ body {
   max-width: 100vw;
 }
 
+/* Custom select element styling */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select option {
+  background-color: #0D1117;
+  color: #66FCF1;
+}
+
+/* Style for the highlighted/selected option */
+select option:hover, 
+select option:focus, 
+select option:active,
+select option:checked {
+  background: linear-gradient(135deg, #45A29E 0%, #2d6c6a 100%);
+  color: white;
+}
+
 /* Hide scrollbar but keep scrolling functionality */
 /* For Webkit browsers (Chrome, Safari) */
 ::-webkit-scrollbar {

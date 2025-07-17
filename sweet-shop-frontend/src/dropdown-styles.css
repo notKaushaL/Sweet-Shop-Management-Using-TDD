@@ -1,0 +1,58 @@
+/* Style the select dropdown */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Firefox */
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #66FCF1;
+}
+
+/* Override browser-specific styling for dropdowns */
+select option {
+  background-color: #0D1117;
+  color: #66FCF1;
+  padding: 10px;
+}
+
+select option:checked {
+  background: #1F2833;
+  color: #66FCF1;
+}
+
+select option:hover,
+select option:focus {
+  background: linear-gradient(135deg, #45A29E 0%, #2d6c6a 100%);
+  color: white;
+}
+
+/* For Webkit browsers like Chrome/Safari */
+select::-webkit-scrollbar {
+  width: 8px;
+}
+
+select::-webkit-scrollbar-track {
+  background: #0D1117;
+}
+
+select::-webkit-scrollbar-thumb {
+  background-color: #45A29E;
+  border-radius: 4px;
+  border: 2px solid #0D1117;
+}
+
+/* Force the dropdown styling for all browsers */
+@-moz-document url-prefix() {
+  select {
+    color: #66FCF1;
+    background-color: #1F2833;
+  }
+  
+  select option {
+    background-color: #0D1117;
+    color: #66FCF1;
+  }
+}

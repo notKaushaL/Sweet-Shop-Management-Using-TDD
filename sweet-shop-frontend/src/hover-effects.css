@@ -1,12 +1,13 @@
-/* Glassmorphic hover effect for sweet cards and UI elements */
+/* Modern hover effect for sweet cards and UI elements */
 .glass-hover {
   transition: all 300ms ease !important;
+  transform: translateY(0) !important;
 }
 
 .glass-hover:hover {
-  background-color: rgba(255, 255, 255, 0.3) !important;
-  backdrop-filter: blur(8px) !important;
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.5) !important;
+  background-color: #121824 !important;
+  box-shadow: 0 8px 20px rgba(102, 252, 241, 0.2) !important;
+  transform: translateY(-5px) !important;
 }
 
 /* Button hover effects */
@@ -16,8 +17,9 @@
 }
 
 .button-hover:hover {
-  background-color: rgba(255, 255, 255, 0.3) !important;
-  backdrop-filter: blur(8px) !important;
+  filter: brightness(110%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(102, 252, 241, 0.3) !important;
 }
 
 /* Underline effect for buttons */
@@ -44,7 +46,22 @@
 }
 
 .input-hover:hover {
-  background-color: rgba(255, 255, 255, 0.3) !important;
-  backdrop-filter: blur(8px) !important;
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.5) !important;
+  background-color: rgba(102, 252, 241, 0.05) !important;
+  box-shadow: 0 0 15px rgba(102, 252, 241, 0.2) !important;
+}
+
+/* Dropdown menu styling */
+select {
+  background-color: #1F2833 !important;
+}
+
+select option {
+  background-color: #0D1117 !important;
+  color: #C5C6C7 !important;
+  padding: 8px 12px !important;
+}
+
+select option:hover, select option:focus {
+  background: linear-gradient(135deg, #45A29E 0%, #2d6c6a 100%) !important;
+  color: white !important;
 }

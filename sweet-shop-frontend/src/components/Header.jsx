@@ -5,9 +5,9 @@ function Header() {
   return (
     <header style={{
       backgroundColor: '#0B0C10',
-      padding: '0.75rem 0',
-      borderBottom: '1px solid #66FCF1',
-      boxShadow: '0 2px 5px rgba(0,0,0,0.2)'
+      padding: '1rem 0',
+      borderBottom: 'none',
+      boxShadow: '0 4px 12px rgba(102, 252, 241, 0.1)'
     }}>
       <div style={{ 
         width: '100%', 
@@ -16,11 +16,14 @@ function Header() {
         textAlign: 'left'
       }}>
         <h1 style={{ 
-          fontSize: '1.8rem', 
+          fontSize: '1.9rem', 
           fontWeight: 'bold',
-          color: '#66FCF1',
+          background: 'linear-gradient(to right, #66FCF1, #45A29E)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
           margin: '-0.5rem',
-          display: 'inline-block'
+          display: 'inline-block',
+          letterSpacing: '0.5px'
         }}>
           🛒 Sweet Shop Management 
         </h1>

@@ -1,7 +1,17 @@
 import React from 'react';
 
 /**
- * Component for displaying a single sweet as a card
+ *        <h3 style={{ 
+          background: 'linear-gradient(to right, #66FCF1, #45A29E)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          fontSize: '1.5rem', 
+          fontWeight: 'bold',
+          marginBottom: '0.5rem',
+          letterSpacing: '0.5px'
+        }}>
+          {sweet.name}
+        </h3>nt for displaying a single sweet as a card
  */
 function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
   const handlePurchase = () => {
@@ -22,12 +32,13 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
     <div 
       className="glass-hover"
       style={{
-        backgroundColor: '#1F2833',
-        border: '1px solid #66FCF1',
-        borderRadius: '8px',
-        padding: '0.75rem',
+        backgroundColor: '#0D1117',
+        border: 'none',
+        borderRadius: '12px',
+        padding: '1rem',
         display: 'flex',
         flexDirection: 'column',
+        boxShadow: '0 4px 12px rgba(102, 252, 241, 0.15)',
         width: '90%',
         minWidth: '95%',
         height: '100%',
@@ -36,9 +47,10 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
       <div style={{ marginBottom: '0.5rem' }}>
         <h3 style={{ 
           color: '#66FCF1', 
-          fontSize: '1.4rem', 
+          fontSize: '1.6rem', 
           fontWeight: 'bold',
-          marginBottom: '0.4rem' 
+          marginBottom: '0.4rem',
+          backgroundColor: 'linear-gradient(to right, #66FCF1, #45A29E)', 
         }}>
           {sweet.name}
         </h3>
@@ -54,12 +66,13 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
         }}>
           <span style={{ fontWeight: 'bold', marginRight: '0.25rem' }}>Category:</span> 
           <span style={{
-            backgroundColor: '#66FCF1',
+            background: 'linear-gradient(135deg, #66FCF1 0%, #45A29E 100%)',
             color: '#0B0C10',
-            padding: '0.3rem 0.6rem',
-            borderRadius: '4px',
+            padding: '0.3rem 0.8rem',
+            borderRadius: '20px',
             fontSize: '0.9rem',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            letterSpacing: '0.5px'
           }}>
             {sweet.category}
           </span>
@@ -105,15 +118,17 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
           className="button-hover"
           onClick={handlePurchase}
           style={{
-            backgroundColor: '#66FCF1',
+            background: 'linear-gradient(135deg, #66FCF1 0%, #45A29E 100%)',
             color: '#0B0C10',
             border: 'none',
-            padding: '0.6rem',
-            borderRadius: '4px',
+            padding: '0.7rem',
+            borderRadius: '8px',
             fontWeight: 'bold',
             cursor: 'pointer',
             fontSize: '0.85rem',
-            flex: '1'
+            flex: '1',
+            boxShadow: '0 2px 8px rgba(102, 252, 241, 0.2)',
+            transition: 'all 0.3s ease'
           }}
           disabled={sweet.quantity <= 0}
         >
@@ -123,15 +138,17 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
           className="button-hover"
           onClick={handleRestock}
           style={{
-            backgroundColor: '#45A29E',
+            background: 'linear-gradient(135deg, #45A29E 0%, #2d6c6a 100%)',
             color: 'white',
             border: 'none',
-            padding: '0.6rem',
-            borderRadius: '4px',
+            padding: '0.7rem',
+            borderRadius: '8px',
             fontWeight: 'bold',
             cursor: 'pointer',
             fontSize: '0.85rem',
-            flex: '1'
+            flex: '1',
+            boxShadow: '0 2px 8px rgba(69, 162, 158, 0.2)',
+            transition: 'all 0.3s ease'
           }}
         >
           Restock
@@ -140,15 +157,17 @@ function SweetCard({ sweet, onPurchase, onRestock, onDelete }) {
           className="button-hover"
           onClick={() => onDelete(sweet.id)}
           style={{
-            backgroundColor: '#F44336',
+            background: 'linear-gradient(135deg, #F44336 0%, #d32f2f 100%)',
             color: 'white',
             border: 'none',
-            padding: '0.6rem',
-            borderRadius: '4px',
+            padding: '0.7rem',
+            borderRadius: '8px',
             fontWeight: 'bold',
             cursor: 'pointer',
             fontSize: '0.85rem',
-            flex: '1'
+            flex: '1',
+            boxShadow: '0 2px 8px rgba(244, 67, 54, 0.2)',
+            transition: 'all 0.3s ease'
           }}
         >
           Delete

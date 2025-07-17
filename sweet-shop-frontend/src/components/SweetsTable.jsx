@@ -88,9 +88,9 @@ function SweetsTable() {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-xl font-bold text-[#D4AF37]">Sweet Inventory</h2>
+        <h2 className="text-2xl font-bold text-[#66FCF1]">Sweet Inventory</h2>
         <button 
-          className="bg-[#D4AF37] hover:bg-[#B8860B] text-black font-bold py-2 px-4 rounded"
+          className="bg-[#45A29E] hover:bg-[#66FCF1] text-[#0B0C10] font-bold py-2 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#66FCF1]/20"
           onClick={loadSampleData}
           data-testid="load-sample-data"
         >
@@ -99,15 +99,15 @@ function SweetsTable() {
       </div>
       
       {/* Search and Filter */}
-      <div className="bg-[#0D0D0D] p-4 rounded-lg border border-[#D4AF37]">
-        <h3 className="text-lg font-semibold mb-3 text-[#D4AF37]">Search & Filter</h3>
+      <div className="bg-[#1F2833] p-5 rounded-lg border border-[#45A29E] shadow-lg">
+        <h3 className="text-lg font-semibold mb-4 text-[#66FCF1]">Search & Filter</h3>
         <form onSubmit={handleSearch} className="space-y-4">
           <div className="flex space-x-4">
             <div className="flex-1">
               <select
                 value={searchType}
                 onChange={(e) => setSearchType(e.target.value)}
-                className="w-full p-2 bg-[#1A1A1A] border border-[#D4AF37] rounded text-white"
+                className="w-full p-2 bg-[#0B0C10] border border-[#45A29E] rounded-lg text-white focus:border-[#66FCF1] focus:ring focus:ring-[#66FCF1]/20 transition-all"
                 data-testid="search-type-select"
               >
                 <option value="name">Search by Name</option>
@@ -123,7 +123,7 @@ function SweetsTable() {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder={`Enter ${searchType}...`}
-                  className="w-full p-2 bg-[#1A1A1A] border border-[#D4AF37] rounded text-white"
+                  className="w-full p-2 bg-[#0B0C10] border border-[#45A29E] rounded-lg text-white focus:border-[#66FCF1] focus:ring focus:ring-[#66FCF1]/20 transition-all"
                   data-testid="search-term-input"
                 />
               </div>
@@ -134,7 +134,8 @@ function SweetsTable() {
                   value={minPrice}
                   onChange={(e) => setMinPrice(e.target.value)}
                   placeholder="Min Price"
-                  className="w-full p-2 bg-[#1A1A1A] border border-[#D4AF37] rounded text-white"
+                  min="0"
+                  className="w-full p-2 bg-[#0B0C10] border border-[#45A29E] rounded-lg text-white focus:border-[#66FCF1] focus:ring focus:ring-[#66FCF1]/20 transition-all"
                   data-testid="min-price-input"
                 />
                 <input
@@ -142,7 +143,8 @@ function SweetsTable() {
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(e.target.value)}
                   placeholder="Max Price"
-                  className="w-full p-2 bg-gray-800 border border-gold-500 rounded text-white"
+                  min="0"
+                  className="w-full p-2 bg-[#0B0C10] border border-[#45A29E] rounded-lg text-white focus:border-[#66FCF1] focus:ring focus:ring-[#66FCF1]/20 transition-all"
                   data-testid="max-price-input"
                 />
               </div>
@@ -150,7 +152,7 @@ function SweetsTable() {
             
             <button
               type="submit"
-              className="bg-gold-500 hover:bg-gold-600 text-black font-bold py-2 px-6 rounded"
+              className="bg-[#45A29E] hover:bg-[#66FCF1] text-[#0B0C10] font-bold py-2 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-[#66FCF1]/20"
               data-testid="search-button"
             >
               Search
@@ -165,7 +167,7 @@ function SweetsTable() {
                 setSortOrder(e.target.value);
                 setTimeout(() => loadSweets(), 0);
               }}
-              className="p-2 bg-gray-800 border border-gold-500 rounded text-white"
+              className="p-2 bg-[#0B0C10] border border-[#45A29E] rounded-lg text-white focus:border-[#66FCF1] focus:ring focus:ring-[#66FCF1]/20 transition-all"
               data-testid="sort-select"
             >
               <option value="none">None</option>
@@ -177,46 +179,46 @@ function SweetsTable() {
       </div>
       
       {/* Sweets Table */}
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-[#0D0D0D] border border-[#D4AF37] rounded-lg">
+      <div className="overflow-x-auto rounded-lg shadow-xl">
+        <table className="min-w-full bg-[#1F2833] border border-[#45A29E] rounded-lg overflow-hidden">
           <thead>
-            <tr className="bg-[#1A1A1A]">
-              <th className="py-2 px-4 border-b border-[#D4AF37] text-left text-[#D4AF37]">ID</th>
-              <th className="py-2 px-4 border-b border-[#D4AF37] text-left text-[#D4AF37]">Name</th>
-              <th className="py-2 px-4 border-b border-[#D4AF37] text-left text-[#D4AF37]">Category</th>
-              <th className="py-2 px-4 border-b border-[#D4AF37] text-left text-[#D4AF37]">Price</th>
-              <th className="py-2 px-4 border-b border-[#D4AF37] text-left text-[#D4AF37]">Quantity</th>
-              <th className="py-2 px-4 border-b border-[#D4AF37] text-left text-[#D4AF37]">Actions</th>
+            <tr className="bg-[#0B0C10]">
+              <th className="py-3 px-6 border-b border-[#45A29E] text-left text-[#66FCF1] font-bold">ID</th>
+              <th className="py-3 px-6 border-b border-[#45A29E] text-left text-[#66FCF1] font-bold">Name</th>
+              <th className="py-3 px-6 border-b border-[#45A29E] text-left text-[#66FCF1] font-bold">Category</th>
+              <th className="py-3 px-6 border-b border-[#45A29E] text-left text-[#66FCF1] font-bold">Price</th>
+              <th className="py-3 px-6 border-b border-[#45A29E] text-left text-[#66FCF1] font-bold">Quantity</th>
+              <th className="py-3 px-6 border-b border-[#45A29E] text-left text-[#66FCF1] font-bold">Actions</th>
             </tr>
           </thead>
           <tbody>
             {sweets.length > 0 ? (
               sweets.map(sweet => (
-                <tr key={sweet.id} className="hover:bg-gray-800" data-testid={`sweet-row-${sweet.id}`}>
-                  <td className="py-2 px-4 border-b border-gold-500">{sweet.id}</td>
-                  <td className="py-2 px-4 border-b border-gold-500">{sweet.name}</td>
-                  <td className="py-2 px-4 border-b border-gold-500">{sweet.category}</td>
-                  <td className="py-2 px-4 border-b border-gold-500">{sweet.price}</td>
-                  <td className="py-2 px-4 border-b border-gold-500">{sweet.quantity}</td>
-                  <td className="py-2 px-4 border-b border-gold-500">
+                <tr key={sweet.id} className="hover:bg-[#2c3440] transition-colors duration-150" data-testid={`sweet-row-${sweet.id}`}>
+                  <td className="py-3 px-6 border-b border-[#45A29E] text-white">{sweet.id}</td>
+                  <td className="py-3 px-6 border-b border-[#45A29E] text-white font-medium">{sweet.name}</td>
+                  <td className="py-3 px-6 border-b border-[#45A29E] text-white">{sweet.category}</td>
+                  <td className="py-3 px-6 border-b border-[#45A29E] text-white">₹{sweet.price}</td>
+                  <td className="py-3 px-6 border-b border-[#45A29E] text-white">{sweet.quantity}</td>
+                  <td className="py-3 px-6 border-b border-[#45A29E]">
                     <div className="flex space-x-2">
                       <button
                         onClick={() => handlePurchase(sweet.id)}
-                        className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-2 rounded"
+                        className="bg-[#45A29E] hover:bg-[#66FCF1] text-[#0B0C10] font-bold text-xs py-1.5 px-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#66FCF1]/20"
                         data-testid={`purchase-button-${sweet.id}`}
                       >
                         Purchase
                       </button>
                       <button
                         onClick={() => handleRestock(sweet.id)}
-                        className="bg-green-600 hover:bg-green-700 text-white text-xs py-1 px-2 rounded"
+                        className="bg-[#45A29E] hover:bg-[#66FCF1] text-[#0B0C10] font-bold text-xs py-1.5 px-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#66FCF1]/20"
                         data-testid={`restock-button-${sweet.id}`}
                       >
                         Restock
                       </button>
                       <button
                         onClick={() => handleDelete(sweet.id)}
-                        className="bg-red-600 hover:bg-red-700 text-white text-xs py-1 px-2 rounded"
+                        className="bg-[#c25d5d] hover:bg-[#e57373] text-white font-bold text-xs py-1.5 px-3 rounded-lg transition-all duration-300 hover:shadow-lg"
                         data-testid={`delete-button-${sweet.id}`}
                       >
                         Delete
@@ -227,7 +229,7 @@ function SweetsTable() {
               ))
             ) : (
               <tr>
-                <td colSpan="6" className="py-4 text-center text-gray-400">
+                <td colSpan="6" className="py-8 text-center text-gray-300 italic">
                   No sweets found. Please add some sweets or load sample data.
                 </td>
               </tr>
