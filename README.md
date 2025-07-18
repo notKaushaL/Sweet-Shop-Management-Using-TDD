@@ -68,7 +68,7 @@ Visit: [http://localhost:5173](http://localhost:5173)
 
 Run with: `npm test -- --coverage`
 
-![CoverageReport Screenshot](UI-images\CoverageReport.png)
+![CoverageReport Screenshot](/UI-images/CoverageReport.png)
 
 > The backend logic is fully tested. Most key frontend components and utilities are covered with tests.
 
