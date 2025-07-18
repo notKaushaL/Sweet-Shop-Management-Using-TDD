@@ -68,13 +68,7 @@ Visit: [http://localhost:5173](http://localhost:5173)
 
 Run with: `npm test -- --coverage`
 
-| Module          | Statements | Branches | Functions | Lines |
-|-----------------|------------|----------|-----------|-------|
-| All Files       | 91.3%      | 89.5%    | 92.1%     | 90.8% |
-| models/         | 100%       | 100%     | 100%      | 100%  |
-| store/          | 100%       | 100%     | 100%      | 100%  |
-| frontend/utils/ | 78.4%      | 72.0%    | 80.2%     | 76.5% |
-| frontend/forms/ | 85.0%      | 80.0%    | 88.5%     | 83.3% |
+![CoverageReport Screenshot](UI-images\CoverageReport.png)
 
 > The backend logic is fully tested. Most key frontend components and utilities are covered with tests.
 
